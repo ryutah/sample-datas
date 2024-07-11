@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?><database name="AdventureWorksDW2022" schema="dbo" type="Microsoft SQL Server - 16.00.4125">
+   <tables>
+      <table catalog="AdventureWorksDW2022" name="AdventureWorksDWBuildVersion" numRows="1" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="DBVersion" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="1" name="VersionDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DatabaseLog" numRows="96" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="DatabaseLogID" nullable="false" remarks="" size="4" type="int identity" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="1" name="PostTime" nullable="false" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="DatabaseUser" nullable="false" remarks="" size="256" type="sysname" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="Event" nullable="false" remarks="" size="256" type="sysname" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="Schema" nullable="true" remarks="" size="256" type="sysname" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="Object" nullable="true" remarks="" size="256" type="sysname" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="TSQL" nullable="false" remarks="" size="2147483647" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="XmlEvent" nullable="false" remarks="" size="2147483647" type="xml" typeCode="-16"/>
+         <primaryKey column="DatabaseLogID" sequenceNumberInPK="1"/>
+         <index name="PK_DatabaseLog_DatabaseLogID" unique="true">
+            <column ascending="true" name="DatabaseLogID"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimAccount" numRows="99" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="AccountKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ParentAccountKey" foreignKey="FK_DimAccount_DimAccount" implied="false" onDeleteCascade="false" schema="dbo" table="DimAccount"/>
+            <child catalog="AdventureWorksDW2022" column="AccountKey" foreignKey="FK_FactFinance_DimAccount" implied="false" onDeleteCascade="false" schema="dbo" table="FactFinance"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ParentAccountKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="AccountKey" foreignKey="FK_DimAccount_DimAccount" implied="false" onDeleteCascade="false" schema="dbo" table="DimAccount"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="AccountCodeAlternateKey" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ParentAccountCodeAlternateKey" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="AccountDescription" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="AccountType" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="Operator" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="CustomMembers" nullable="true" remarks="" size="600" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="ValueType" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="CustomMemberOptions" nullable="true" remarks="" size="400" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="AccountKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimAccount" unique="true">
+            <column ascending="true" name="AccountKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimCurrency" numRows="105" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="CurrencyKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="FK_DimOrganization_DimCurrency" implied="false" onDeleteCascade="false" schema="dbo" table="DimOrganization"/>
+            <child catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="FK_FactCurrencyRate_DimCurrency" implied="false" onDeleteCascade="false" schema="dbo" table="FactCurrencyRate"/>
+            <child catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="FK_FactInternetSales_DimCurrency" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+            <child catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="FK_FactResellerSales_DimCurrency" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+            <child catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="NewFactCurrencyRate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="CurrencyAlternateKey" nullable="false" remarks="" size="6" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="CurrencyName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="CurrencyKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimCurrency_CurrencyKey" unique="true">
+            <column ascending="true" name="CurrencyKey"/>
+         </index>
+         <index name="AK_DimCurrency_CurrencyAlternateKey" unique="true">
+            <column ascending="true" name="CurrencyAlternateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimCustomer" numRows="18484" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="CustomerKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="FK_FactInternetSales_DimCustomer" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+            <child catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="FK_FactSurveyResponse_CustomerKey" implied="false" onDeleteCascade="false" schema="dbo" table="FactSurveyResponse"/>
+            <child catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="vAssocSeqOrders"/>
+            <child catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="vDMPrep"/>
+            <child catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="vTargetMail"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="GeographyKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="GeographyKey" foreignKey="FK_DimCustomer_DimGeography" implied="false" onDeleteCascade="false" schema="dbo" table="DimGeography"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="CustomerAlternateKey" nullable="false" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="Title" nullable="true" remarks="" size="16" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="FirstName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="MiddleName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="LastName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="NameStyle" nullable="true" remarks="" size="1" type="bit" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="BirthDate" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="MaritalStatus" nullable="true" remarks="" size="2" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="Suffix" nullable="true" remarks="" size="20" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="Gender" nullable="true" remarks="" size="2" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="EmailAddress" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="13" name="YearlyIncome" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="TotalChildren" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="NumberChildrenAtHome" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="EnglishEducation" nullable="true" remarks="" size="80" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="SpanishEducation" nullable="true" remarks="" size="80" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="FrenchEducation" nullable="true" remarks="" size="80" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="EnglishOccupation" nullable="true" remarks="" size="200" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="SpanishOccupation" nullable="true" remarks="" size="200" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="21" name="FrenchOccupation" nullable="true" remarks="" size="200" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="HouseOwnerFlag" nullable="true" remarks="" size="2" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="23" name="NumberCarsOwned" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="24" name="AddressLine1" nullable="true" remarks="" size="240" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="25" name="AddressLine2" nullable="true" remarks="" size="240" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="26" name="Phone" nullable="true" remarks="" size="40" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="27" name="DateFirstPurchase" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="28" name="CommuteDistance" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="CustomerKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimCustomer_CustomerKey" unique="true">
+            <column ascending="true" name="CustomerKey"/>
+         </index>
+         <index name="IX_DimCustomer_CustomerAlternateKey" unique="true">
+            <column ascending="true" name="CustomerAlternateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimDate" numRows="3652" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="DateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactCallCenter_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="FactCallCenter"/>
+            <child catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactCurrencyRate_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="FactCurrencyRate"/>
+            <child catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactFinance_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="FactFinance"/>
+            <child catalog="AdventureWorksDW2022" column="DueDateKey" foreignKey="FK_FactInternetSales_DimDate1" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+            <child catalog="AdventureWorksDW2022" column="OrderDateKey" foreignKey="FK_FactInternetSales_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+            <child catalog="AdventureWorksDW2022" column="ShipDateKey" foreignKey="FK_FactInternetSales_DimDate2" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+            <child catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactProductInventory_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="FactProductInventory"/>
+            <child catalog="AdventureWorksDW2022" column="DueDateKey" foreignKey="FK_FactResellerSales_DimDate1" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+            <child catalog="AdventureWorksDW2022" column="OrderDateKey" foreignKey="FK_FactResellerSales_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+            <child catalog="AdventureWorksDW2022" column="ShipDateKey" foreignKey="FK_FactResellerSales_DimDate2" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+            <child catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactSalesQuota_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="FactSalesQuota"/>
+            <child catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactSurveyResponse_DateKey" implied="false" onDeleteCascade="false" schema="dbo" table="FactSurveyResponse"/>
+            <child catalog="AdventureWorksDW2022" column="DateKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="NewFactCurrencyRate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="FullDateAlternateKey" nullable="false" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="DayNumberOfWeek" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="EnglishDayNameOfWeek" nullable="false" remarks="" size="20" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="SpanishDayNameOfWeek" nullable="false" remarks="" size="20" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="FrenchDayNameOfWeek" nullable="false" remarks="" size="20" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="DayNumberOfMonth" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="DayNumberOfYear" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="WeekNumberOfYear" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="EnglishMonthName" nullable="false" remarks="" size="20" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="SpanishMonthName" nullable="false" remarks="" size="20" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="FrenchMonthName" nullable="false" remarks="" size="20" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="MonthNumberOfYear" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="CalendarQuarter" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="CalendarYear" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="CalendarSemester" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="FiscalQuarter" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="FiscalYear" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="FiscalSemester" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <primaryKey column="DateKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimDate_DateKey" unique="true">
+            <column ascending="true" name="DateKey"/>
+         </index>
+         <index name="AK_DimDate_FullDateAlternateKey" unique="true">
+            <column ascending="true" name="FullDateAlternateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimDepartmentGroup" numRows="7" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="DepartmentGroupKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ParentDepartmentGroupKey" foreignKey="FK_DimDepartmentGroup_DimDepartmentGroup" implied="false" onDeleteCascade="false" schema="dbo" table="DimDepartmentGroup"/>
+            <child catalog="AdventureWorksDW2022" column="DepartmentGroupKey" foreignKey="FK_FactFinance_DimDepartmentGroup" implied="false" onDeleteCascade="false" schema="dbo" table="FactFinance"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ParentDepartmentGroupKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DepartmentGroupKey" foreignKey="FK_DimDepartmentGroup_DimDepartmentGroup" implied="false" onDeleteCascade="false" schema="dbo" table="DimDepartmentGroup"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="DepartmentGroupName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="DepartmentGroupKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimDepartmentGroup" unique="true">
+            <column ascending="true" name="DepartmentGroupKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimEmployee" numRows="296" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="EmployeeKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ParentEmployeeKey" foreignKey="FK_DimEmployee_DimEmployee" implied="false" onDeleteCascade="false" schema="dbo" table="DimEmployee"/>
+            <child catalog="AdventureWorksDW2022" column="EmployeeKey" foreignKey="FK_FactResellerSales_DimEmployee" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+            <child catalog="AdventureWorksDW2022" column="EmployeeKey" foreignKey="FK_FactSalesQuota_DimEmployee" implied="false" onDeleteCascade="false" schema="dbo" table="FactSalesQuota"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ParentEmployeeKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="EmployeeKey" foreignKey="FK_DimEmployee_DimEmployee" implied="false" onDeleteCascade="false" schema="dbo" table="DimEmployee"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="EmployeeNationalIDAlternateKey" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ParentEmployeeNationalIDAlternateKey" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="SalesTerritoryKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="SalesTerritoryKey" foreignKey="FK_DimEmployee_DimSalesTerritory" implied="false" onDeleteCascade="false" schema="dbo" table="DimSalesTerritory"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="FirstName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="LastName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="MiddleName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="NameStyle" nullable="false" remarks="" size="1" type="bit" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="Title" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="HireDate" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="BirthDate" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="LoginID" nullable="true" remarks="" size="512" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="EmailAddress" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="Phone" nullable="true" remarks="" size="50" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="MaritalStatus" nullable="true" remarks="" size="2" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="EmergencyContactName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="EmergencyContactPhone" nullable="true" remarks="" size="50" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="SalariedFlag" nullable="true" remarks="" size="1" type="bit" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="Gender" nullable="true" remarks="" size="2" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="PayFrequency" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="21" name="BaseRate" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="VacationHours" nullable="true" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="23" name="SickLeaveHours" nullable="true" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="24" name="CurrentFlag" nullable="false" remarks="" size="1" type="bit" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="25" name="SalesPersonFlag" nullable="false" remarks="" size="1" type="bit" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="26" name="DepartmentName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="27" name="StartDate" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="28" name="EndDate" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="29" name="Status" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="30" name="EmployeePhoto" nullable="true" remarks="" size="2147483647" type="varbinary" typeCode="-3"/>
+         <primaryKey column="EmployeeKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimEmployee_EmployeeKey" unique="true">
+            <column ascending="true" name="EmployeeKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimGeography" numRows="655" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="GeographyKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="GeographyKey" foreignKey="FK_DimCustomer_DimGeography" implied="false" onDeleteCascade="false" schema="dbo" table="DimCustomer"/>
+            <child catalog="AdventureWorksDW2022" column="GeographyKey" foreignKey="FK_DimReseller_DimGeography" implied="false" onDeleteCascade="false" schema="dbo" table="DimReseller"/>
+            <child catalog="AdventureWorksDW2022" column="GeographyKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="vTargetMail"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="City" nullable="true" remarks="" size="60" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="StateProvinceCode" nullable="true" remarks="" size="6" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="StateProvinceName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="CountryRegionCode" nullable="true" remarks="" size="6" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="EnglishCountryRegionName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="SpanishCountryRegionName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="FrenchCountryRegionName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="PostalCode" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="SalesTerritoryKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="SalesTerritoryKey" foreignKey="FK_DimGeography_DimSalesTerritory" implied="false" onDeleteCascade="false" schema="dbo" table="DimSalesTerritory"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="IpAddressLocator" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="GeographyKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimGeography_GeographyKey" unique="true">
+            <column ascending="true" name="GeographyKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimOrganization" numRows="14" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="OrganizationKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ParentOrganizationKey" foreignKey="FK_DimOrganization_DimOrganization" implied="false" onDeleteCascade="false" schema="dbo" table="DimOrganization"/>
+            <child catalog="AdventureWorksDW2022" column="OrganizationKey" foreignKey="FK_FactFinance_DimOrganization" implied="false" onDeleteCascade="false" schema="dbo" table="FactFinance"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ParentOrganizationKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="OrganizationKey" foreignKey="FK_DimOrganization_DimOrganization" implied="false" onDeleteCascade="false" schema="dbo" table="DimOrganization"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="PercentageOfOwnership" nullable="true" remarks="" size="32" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="OrganizationName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="CurrencyKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="FK_DimOrganization_DimCurrency" implied="false" onDeleteCascade="false" schema="dbo" table="DimCurrency"/>
+         </column>
+         <primaryKey column="OrganizationKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimOrganization" unique="true">
+            <column ascending="true" name="OrganizationKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimProduct" numRows="606" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="ProductKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ProductKey" foreignKey="FK_FactInternetSales_DimProduct" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+            <child catalog="AdventureWorksDW2022" column="ProductKey" foreignKey="FK_FactProductInventory_DimProduct" implied="false" onDeleteCascade="false" schema="dbo" table="FactProductInventory"/>
+            <child catalog="AdventureWorksDW2022" column="ProductKey" foreignKey="FK_FactResellerSales_DimProduct" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ProductAlternateKey" nullable="true" remarks="" size="50" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="ProductSubcategoryKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ProductSubcategoryKey" foreignKey="FK_DimProduct_DimProductSubcategory" implied="false" onDeleteCascade="false" schema="dbo" table="DimProductSubcategory"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="WeightUnitMeasureCode" nullable="true" remarks="" size="6" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="SizeUnitMeasureCode" nullable="true" remarks="" size="6" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="EnglishProductName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="SpanishProductName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="FrenchProductName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="8" name="StandardCost" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="FinishedGoodsFlag" nullable="false" remarks="" size="1" type="bit" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="Color" nullable="false" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="SafetyStockLevel" nullable="true" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="ReorderPoint" nullable="true" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="13" name="ListPrice" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="Size" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="SizeRange" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="Weight" nullable="true" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="DaysToManufacture" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="ProductLine" nullable="true" remarks="" size="4" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="19" name="DealerPrice" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="Class" nullable="true" remarks="" size="4" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="21" name="Style" nullable="true" remarks="" size="4" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="ModelName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="23" name="LargePhoto" nullable="true" remarks="" size="2147483647" type="varbinary" typeCode="-3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="24" name="EnglishDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="25" name="FrenchDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="26" name="ChineseDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="27" name="ArabicDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="28" name="HebrewDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="29" name="ThaiDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="30" name="GermanDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="31" name="JapaneseDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="32" name="TurkishDescription" nullable="true" remarks="" size="800" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="33" name="StartDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="34" name="EndDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="35" name="Status" nullable="true" remarks="" size="14" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="ProductKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimProduct_ProductKey" unique="true">
+            <column ascending="true" name="ProductKey"/>
+         </index>
+         <index name="AK_DimProduct_ProductAlternateKey_StartDate" unique="true">
+            <column ascending="true" name="ProductAlternateKey"/>
+            <column ascending="true" name="StartDate"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimProductCategory" numRows="4" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="ProductCategoryKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ProductCategoryKey" foreignKey="FK_DimProductSubcategory_DimProductCategory" implied="false" onDeleteCascade="false" schema="dbo" table="DimProductSubcategory"/>
+            <child catalog="AdventureWorksDW2022" column="ProductCategoryKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="FactSurveyResponse"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ProductCategoryAlternateKey" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="EnglishProductCategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="SpanishProductCategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="FrenchProductCategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="ProductCategoryKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimProductCategory_ProductCategoryKey" unique="true">
+            <column ascending="true" name="ProductCategoryKey"/>
+         </index>
+         <index name="AK_DimProductCategory_ProductCategoryAlternateKey" unique="true">
+            <column ascending="true" name="ProductCategoryAlternateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimProductSubcategory" numRows="37" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="ProductSubcategoryKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ProductSubcategoryKey" foreignKey="FK_DimProduct_DimProductSubcategory" implied="false" onDeleteCascade="false" schema="dbo" table="DimProduct"/>
+            <child catalog="AdventureWorksDW2022" column="ProductSubcategoryKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="FactSurveyResponse"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ProductSubcategoryAlternateKey" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="EnglishProductSubcategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="SpanishProductSubcategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="FrenchProductSubcategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="ProductCategoryKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ProductCategoryKey" foreignKey="FK_DimProductSubcategory_DimProductCategory" implied="false" onDeleteCascade="false" schema="dbo" table="DimProductCategory"/>
+         </column>
+         <primaryKey column="ProductSubcategoryKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimProductSubcategory_ProductSubcategoryKey" unique="true">
+            <column ascending="true" name="ProductSubcategoryKey"/>
+         </index>
+         <index name="AK_DimProductSubcategory_ProductSubcategoryAlternateKey" unique="true">
+            <column ascending="true" name="ProductSubcategoryAlternateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimPromotion" numRows="16" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="PromotionKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="PromotionKey" foreignKey="FK_FactInternetSales_DimPromotion" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+            <child catalog="AdventureWorksDW2022" column="PromotionKey" foreignKey="FK_FactResellerSales_DimPromotion" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="PromotionAlternateKey" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="EnglishPromotionName" nullable="true" remarks="" size="510" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="SpanishPromotionName" nullable="true" remarks="" size="510" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="FrenchPromotionName" nullable="true" remarks="" size="510" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="DiscountPct" nullable="true" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="EnglishPromotionType" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="SpanishPromotionType" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="FrenchPromotionType" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="EnglishPromotionCategory" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="SpanishPromotionCategory" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="FrenchPromotionCategory" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="12" name="StartDate" nullable="false" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="13" name="EndDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="MinQty" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="MaxQty" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <primaryKey column="PromotionKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimPromotion_PromotionKey" unique="true">
+            <column ascending="true" name="PromotionKey"/>
+         </index>
+         <index name="AK_DimPromotion_PromotionAlternateKey" unique="true">
+            <column ascending="true" name="PromotionAlternateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimReseller" numRows="701" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="ResellerKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ResellerKey" foreignKey="FK_FactResellerSales_DimReseller" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="GeographyKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="GeographyKey" foreignKey="FK_DimReseller_DimGeography" implied="false" onDeleteCascade="false" schema="dbo" table="DimGeography"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="ResellerAlternateKey" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="Phone" nullable="true" remarks="" size="50" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="BusinessType" nullable="false" remarks="" size="20" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="ResellerName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="NumberEmployees" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="OrderFrequency" nullable="true" remarks="" size="1" type="char" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="OrderMonth" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="FirstOrderYear" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="LastOrderYear" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="ProductLine" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="AddressLine1" nullable="true" remarks="" size="120" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="AddressLine2" nullable="true" remarks="" size="120" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="14" name="AnnualSales" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="BankName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="MinPaymentType" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="17" name="MinPaymentAmount" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="18" name="AnnualRevenue" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="YearOpened" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <primaryKey column="ResellerKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimReseller_ResellerKey" unique="true">
+            <column ascending="true" name="ResellerKey"/>
+         </index>
+         <index name="AK_DimReseller_ResellerAlternateKey" unique="true">
+            <column ascending="true" name="ResellerAlternateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimSalesReason" numRows="10" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="SalesReasonKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="SalesReasonKey" foreignKey="FK_FactInternetSalesReason_DimSalesReason" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSalesReason"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="SalesReasonAlternateKey" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="SalesReasonName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="SalesReasonReasonType" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="SalesReasonKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimSalesReason_SalesReasonKey" unique="true">
+            <column ascending="true" name="SalesReasonKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimSalesTerritory" numRows="11" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="SalesTerritoryKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="SalesTerritoryKey" foreignKey="FK_DimEmployee_DimSalesTerritory" implied="false" onDeleteCascade="false" schema="dbo" table="DimEmployee"/>
+            <child catalog="AdventureWorksDW2022" column="SalesTerritoryKey" foreignKey="FK_DimGeography_DimSalesTerritory" implied="false" onDeleteCascade="false" schema="dbo" table="DimGeography"/>
+            <child catalog="AdventureWorksDW2022" column="SalesTerritoryKey" foreignKey="FK_FactInternetSales_DimSalesTerritory" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+            <child catalog="AdventureWorksDW2022" column="SalesTerritoryKey" foreignKey="FK_FactResellerSales_DimSalesTerritory" implied="false" onDeleteCascade="false" schema="dbo" table="FactResellerSales"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="SalesTerritoryAlternateKey" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="SalesTerritoryRegion" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="SalesTerritoryCountry" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="SalesTerritoryGroup" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="SalesTerritoryImage" nullable="true" remarks="" size="2147483647" type="varbinary" typeCode="-3"/>
+         <primaryKey column="SalesTerritoryKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimSalesTerritory_SalesTerritoryKey" unique="true">
+            <column ascending="true" name="SalesTerritoryKey"/>
+         </index>
+         <index name="AK_DimSalesTerritory_SalesTerritoryAlternateKey" unique="true">
+            <column ascending="true" name="SalesTerritoryAlternateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="DimScenario" numRows="3" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="ScenarioKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4">
+            <child catalog="AdventureWorksDW2022" column="ScenarioKey" foreignKey="FK_FactFinance_DimScenario" implied="false" onDeleteCascade="false" schema="dbo" table="FactFinance"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ScenarioName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="ScenarioKey" sequenceNumberInPK="1"/>
+         <index name="PK_DimScenario" unique="true">
+            <column ascending="true" name="ScenarioKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactAdditionalInternationalProductDescription" numRows="15168" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="ProductKey" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="CultureName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="ProductDescription" nullable="false" remarks="" size="2147483647" type="nvarchar" typeCode="-9"/>
+         <primaryKey column="ProductKey" sequenceNumberInPK="1"/>
+         <primaryKey column="CultureName" sequenceNumberInPK="2"/>
+         <index name="PK_FactAdditionalInternationalProductDescription_ProductKey_CultureName" unique="true">
+            <column ascending="true" name="ProductKey"/>
+            <column ascending="true" name="CultureName"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactCallCenter" numRows="120" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="FactCallCenterID" nullable="false" remarks="" size="4" type="int identity" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="DateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactCallCenter_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="WageType" nullable="false" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="Shift" nullable="false" remarks="" size="40" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="LevelOneOperators" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="LevelTwoOperators" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="TotalOperators" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="Calls" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="AutomaticResponses" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="Orders" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="IssuesRaised" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="AverageTimePerIssue" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="ServiceGrade" nullable="false" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="13" name="Date" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <primaryKey column="FactCallCenterID" sequenceNumberInPK="1"/>
+         <index name="PK_FactCallCenter_FactCallCenterID" unique="true">
+            <column ascending="true" name="FactCallCenterID"/>
+         </index>
+         <index name="AK_FactCallCenter_DateKey_Shift" unique="true">
+            <column ascending="true" name="DateKey"/>
+            <column ascending="true" name="Shift"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactCurrencyRate" numRows="14264" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="CurrencyKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="FK_FactCurrencyRate_DimCurrency" implied="false" onDeleteCascade="false" schema="dbo" table="DimCurrency"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="DateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactCurrencyRate_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="AverageRate" nullable="false" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="EndOfDayRate" nullable="false" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="4" name="Date" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <primaryKey column="CurrencyKey" sequenceNumberInPK="1"/>
+         <primaryKey column="DateKey" sequenceNumberInPK="2"/>
+         <index name="PK_FactCurrencyRate_CurrencyKey_DateKey" unique="true">
+            <column ascending="true" name="CurrencyKey"/>
+            <column ascending="true" name="DateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactFinance" numRows="39409" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="FinanceKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="DateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactFinance_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="OrganizationKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="OrganizationKey" foreignKey="FK_FactFinance_DimOrganization" implied="false" onDeleteCascade="false" schema="dbo" table="DimOrganization"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="DepartmentGroupKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DepartmentGroupKey" foreignKey="FK_FactFinance_DimDepartmentGroup" implied="false" onDeleteCascade="false" schema="dbo" table="DimDepartmentGroup"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="ScenarioKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ScenarioKey" foreignKey="FK_FactFinance_DimScenario" implied="false" onDeleteCascade="false" schema="dbo" table="DimScenario"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="AccountKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="AccountKey" foreignKey="FK_FactFinance_DimAccount" implied="false" onDeleteCascade="false" schema="dbo" table="DimAccount"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="Amount" nullable="false" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="7" name="Date" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactInternetSales" numRows="60398" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="ProductKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ProductKey" foreignKey="FK_FactInternetSales_DimProduct" implied="false" onDeleteCascade="false" schema="dbo" table="DimProduct"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="OrderDateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactInternetSales_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="DueDateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactInternetSales_DimDate1" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ShipDateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactInternetSales_DimDate2" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="CustomerKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="FK_FactInternetSales_DimCustomer" implied="false" onDeleteCascade="false" schema="dbo" table="DimCustomer"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="PromotionKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="PromotionKey" foreignKey="FK_FactInternetSales_DimPromotion" implied="false" onDeleteCascade="false" schema="dbo" table="DimPromotion"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="CurrencyKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="FK_FactInternetSales_DimCurrency" implied="false" onDeleteCascade="false" schema="dbo" table="DimCurrency"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="SalesTerritoryKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="SalesTerritoryKey" foreignKey="FK_FactInternetSales_DimSalesTerritory" implied="false" onDeleteCascade="false" schema="dbo" table="DimSalesTerritory"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="SalesOrderNumber" nullable="false" remarks="" size="40" type="nvarchar" typeCode="-9">
+            <child catalog="AdventureWorksDW2022" column="SalesOrderNumber" foreignKey="FK_FactInternetSalesReason_FactInternetSales" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSalesReason"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="SalesOrderLineNumber" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6">
+            <child catalog="AdventureWorksDW2022" column="SalesOrderLineNumber" foreignKey="FK_FactInternetSalesReason_FactInternetSales" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSalesReason"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="RevisionNumber" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="OrderQuantity" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="12" name="UnitPrice" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="13" name="ExtendedAmount" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="UnitPriceDiscountPct" nullable="false" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="DiscountAmount" nullable="false" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="16" name="ProductStandardCost" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="17" name="TotalProductCost" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="18" name="SalesAmount" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="19" name="TaxAmt" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="20" name="Freight" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="21" name="CarrierTrackingNumber" nullable="true" remarks="" size="50" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="CustomerPONumber" nullable="true" remarks="" size="50" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="23" name="OrderDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="24" name="DueDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="25" name="ShipDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <primaryKey column="SalesOrderNumber" sequenceNumberInPK="1"/>
+         <primaryKey column="SalesOrderLineNumber" sequenceNumberInPK="2"/>
+         <index name="PK_FactInternetSales_SalesOrderNumber_SalesOrderLineNumber" unique="true">
+            <column ascending="true" name="SalesOrderNumber"/>
+            <column ascending="true" name="SalesOrderLineNumber"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactInternetSalesReason" numRows="64515" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="SalesOrderNumber" nullable="false" remarks="" size="40" type="nvarchar" typeCode="-9">
+            <parent catalog="AdventureWorksDW2022" column="SalesOrderNumber" foreignKey="FK_FactInternetSalesReason_FactInternetSales" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="SalesOrderLineNumber" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6">
+            <parent catalog="AdventureWorksDW2022" column="SalesOrderLineNumber" foreignKey="FK_FactInternetSalesReason_FactInternetSales" implied="false" onDeleteCascade="false" schema="dbo" table="FactInternetSales"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="SalesReasonKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="SalesReasonKey" foreignKey="FK_FactInternetSalesReason_DimSalesReason" implied="false" onDeleteCascade="false" schema="dbo" table="DimSalesReason"/>
+         </column>
+         <primaryKey column="SalesOrderNumber" sequenceNumberInPK="1"/>
+         <primaryKey column="SalesOrderLineNumber" sequenceNumberInPK="2"/>
+         <primaryKey column="SalesReasonKey" sequenceNumberInPK="3"/>
+         <index name="PK_FactInternetSalesReason_SalesOrderNumber_SalesOrderLineNumber_SalesReasonKey" unique="true">
+            <column ascending="true" name="SalesOrderNumber"/>
+            <column ascending="true" name="SalesOrderLineNumber"/>
+            <column ascending="true" name="SalesReasonKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactProductInventory" numRows="776286" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="ProductKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ProductKey" foreignKey="FK_FactProductInventory_DimProduct" implied="false" onDeleteCascade="false" schema="dbo" table="DimProduct"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="DateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactProductInventory_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="MovementDate" nullable="false" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="3" name="UnitCost" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="UnitsIn" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="UnitsOut" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="UnitsBalance" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <primaryKey column="ProductKey" sequenceNumberInPK="1"/>
+         <primaryKey column="DateKey" sequenceNumberInPK="2"/>
+         <index name="PK_FactProductInventory" unique="true">
+            <column ascending="true" name="ProductKey"/>
+            <column ascending="true" name="DateKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactResellerSales" numRows="60855" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="ProductKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ProductKey" foreignKey="FK_FactResellerSales_DimProduct" implied="false" onDeleteCascade="false" schema="dbo" table="DimProduct"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="OrderDateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactResellerSales_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="DueDateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactResellerSales_DimDate1" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ShipDateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactResellerSales_DimDate2" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="ResellerKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ResellerKey" foreignKey="FK_FactResellerSales_DimReseller" implied="false" onDeleteCascade="false" schema="dbo" table="DimReseller"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="EmployeeKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="EmployeeKey" foreignKey="FK_FactResellerSales_DimEmployee" implied="false" onDeleteCascade="false" schema="dbo" table="DimEmployee"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="PromotionKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="PromotionKey" foreignKey="FK_FactResellerSales_DimPromotion" implied="false" onDeleteCascade="false" schema="dbo" table="DimPromotion"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="CurrencyKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="FK_FactResellerSales_DimCurrency" implied="false" onDeleteCascade="false" schema="dbo" table="DimCurrency"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="SalesTerritoryKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="SalesTerritoryKey" foreignKey="FK_FactResellerSales_DimSalesTerritory" implied="false" onDeleteCascade="false" schema="dbo" table="DimSalesTerritory"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="SalesOrderNumber" nullable="false" remarks="" size="40" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="SalesOrderLineNumber" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="RevisionNumber" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="OrderQuantity" nullable="true" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="13" name="UnitPrice" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="14" name="ExtendedAmount" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="UnitPriceDiscountPct" nullable="true" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="DiscountAmount" nullable="true" remarks="" size="8" type="float" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="17" name="ProductStandardCost" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="18" name="TotalProductCost" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="19" name="SalesAmount" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="20" name="TaxAmt" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="21" name="Freight" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="CarrierTrackingNumber" nullable="true" remarks="" size="50" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="23" name="CustomerPONumber" nullable="true" remarks="" size="50" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="24" name="OrderDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="25" name="DueDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="26" name="ShipDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <primaryKey column="SalesOrderNumber" sequenceNumberInPK="1"/>
+         <primaryKey column="SalesOrderLineNumber" sequenceNumberInPK="2"/>
+         <index name="PK_FactResellerSales_SalesOrderNumber_SalesOrderLineNumber" unique="true">
+            <column ascending="true" name="SalesOrderNumber"/>
+            <column ascending="true" name="SalesOrderLineNumber"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactSalesQuota" numRows="163" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="SalesQuotaKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="EmployeeKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="EmployeeKey" foreignKey="FK_FactSalesQuota_DimEmployee" implied="false" onDeleteCascade="false" schema="dbo" table="DimEmployee"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="DateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactSalesQuota_DimDate" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="CalendarYear" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="CalendarQuarter" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="5" name="SalesAmountQuota" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="6" name="Date" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <primaryKey column="SalesQuotaKey" sequenceNumberInPK="1"/>
+         <index name="PK_FactSalesQuota_SalesQuotaKey" unique="true">
+            <column ascending="true" name="SalesQuotaKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="FactSurveyResponse" numRows="2727" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="SurveyResponseKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="DateKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="FK_FactSurveyResponse_DateKey" implied="false" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="CustomerKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="FK_FactSurveyResponse_CustomerKey" implied="false" onDeleteCascade="false" schema="dbo" table="DimCustomer"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="ProductCategoryKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ProductCategoryKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="DimProductCategory"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="EnglishProductCategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="ProductSubcategoryKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="ProductSubcategoryKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="DimProductSubcategory"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="EnglishProductSubcategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="7" name="Date" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <primaryKey column="SurveyResponseKey" sequenceNumberInPK="1"/>
+         <index name="PK_FactSurveyResponse_SurveyResponseKey" unique="true">
+            <column ascending="true" name="SurveyResponseKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="NewFactCurrencyRate" numRows="50" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="AverageRate" nullable="true" remarks="" size="4" type="real" typeCode="7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="CurrencyID" nullable="true" remarks="" size="6" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="CurrencyDate" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="EndOfDayRate" nullable="true" remarks="" size="4" type="real" typeCode="7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="CurrencyKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CurrencyKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="DimCurrency"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="DateKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="DateKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="DimDate"/>
+         </column>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="ProspectiveBuyer" numRows="2059" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="ProspectiveBuyerKey" nullable="false" remarks="" size="4" type="int identity" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="ProspectAlternateKey" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="FirstName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="MiddleName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="LastName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="5" name="BirthDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="MaritalStatus" nullable="true" remarks="" size="2" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="Gender" nullable="true" remarks="" size="2" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="EmailAddress" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="9" name="YearlyIncome" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="TotalChildren" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="NumberChildrenAtHome" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="Education" nullable="true" remarks="" size="80" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="Occupation" nullable="true" remarks="" size="200" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="HouseOwnerFlag" nullable="true" remarks="" size="2" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="NumberCarsOwned" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="AddressLine1" nullable="true" remarks="" size="240" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="AddressLine2" nullable="true" remarks="" size="240" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="City" nullable="true" remarks="" size="60" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="StateProvinceCode" nullable="true" remarks="" size="6" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="PostalCode" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="21" name="Phone" nullable="true" remarks="" size="40" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="Salutation" nullable="true" remarks="" size="16" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="23" name="Unknown" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <primaryKey column="ProspectiveBuyerKey" sequenceNumberInPK="1"/>
+         <index name="PK_ProspectiveBuyer_ProspectiveBuyerKey" unique="true">
+            <column ascending="true" name="ProspectiveBuyerKey"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="sysdiagrams" numRows="9" remarks="" schema="dbo" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="name" nullable="false" remarks="" size="256" type="sysname" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="principal_id" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="true" defaultValue="null" digits="0" id="2" name="diagram_id" nullable="false" remarks="" size="4" type="int identity" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="version" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="definition" nullable="true" remarks="" size="2147483647" type="varbinary" typeCode="-3"/>
+         <primaryKey column="diagram_id" sequenceNumberInPK="1"/>
+         <index name="PK__sysdiagr__C2B05B616B24EA82" unique="true">
+            <column ascending="true" name="diagram_id"/>
+         </index>
+         <index name="UK_principal_name" unique="true">
+            <column ascending="true" name="principal_id"/>
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="vAssocSeqLineItems" numRows="0" remarks="" schema="dbo" type="VIEW" viewSql="CREATE VIEW [dbo].[vAssocSeqLineItems]&#13;&#10;AS&#13;&#10;SELECT     OrderNumber, LineNumber, Model&#13;&#10;FROM         dbo.vDMPrep&#13;&#10;WHERE     (FiscalYear = '2013')&#13;&#10;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="OrderNumber" nullable="false" remarks="" size="40" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="LineNumber" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="Model" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="vAssocSeqOrders" numRows="0" remarks="" schema="dbo" type="VIEW" viewSql="/* vAssocSeqOrders supports assocation and sequence clustering data mmining models.&#13;&#10;      - Limits data to FY2004.&#13;&#10;      - Creates order case table and line item nested table.*/&#13;&#10;CREATE VIEW [dbo].[vAssocSeqOrders]&#13;&#10;AS&#13;&#10;SELECT DISTINCT OrderNumber, CustomerKey, Region, IncomeGroup&#13;&#10;FROM         dbo.vDMPrep&#13;&#10;WHERE     (FiscalYear = '2013')&#13;&#10;&#13;&#10;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="OrderNumber" nullable="false" remarks="" size="40" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="CustomerKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="DimCustomer"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="Region" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="IncomeGroup" nullable="false" remarks="" size="8" type="varchar" typeCode="12"/>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="vDMPrep" numRows="0" remarks="" schema="dbo" type="VIEW" viewSql="&#13;&#10;&#13;&#10;-- vDMPrep will be used as a data source by the other data mining views.  &#13;&#10;-- Uses DW data at customer, product, day, etc. granularity and&#13;&#10;-- gets region, model, year, month, etc.&#13;&#10;CREATE VIEW [dbo].[vDMPrep]&#13;&#10;AS&#13;&#10;    SELECT&#13;&#10;        pc.[EnglishProductCategoryName]&#13;&#10;        ,Coalesce(p.[ModelName], p.[EnglishProductName]) AS [Model]&#13;&#10;        ,c.[CustomerKey]&#13;&#10;        ,s.[SalesTerritoryGroup] AS [Region]&#13;&#10;        ,CASE&#13;&#10;            WHEN Month(GetDate()) &lt; Month(c.[BirthDate])&#13;&#10;                THEN DateDiff(yy,c.[BirthDate],GetDate()) - 1&#13;&#10;            WHEN Month(GetDate()) = Month(c.[BirthDate])&#13;&#10;            AND Day(GetDate()) &lt; Day(c.[BirthDate])&#13;&#10;                THEN DateDiff(yy,c.[BirthDate],GetDate()) - 1&#13;&#10;            ELSE DateDiff(yy,c.[BirthDate],GetDate())&#13;&#10;        END AS [Age]&#13;&#10;        ,CASE&#13;&#10;            WHEN c.[YearlyIncome] &lt; 40000 THEN 'Low'&#13;&#10;            WHEN c.[YearlyIncome] &gt; 60000 THEN 'High'&#13;&#10;            ELSE 'Moderate'&#13;&#10;        END AS [IncomeGroup]&#13;&#10;        ,d.[CalendarYear]&#13;&#10;        ,d.[FiscalYear]&#13;&#10;        ,d.[MonthNumberOfYear] AS [Month]&#13;&#10;        ,f.[SalesOrderNumber] AS [OrderNumber]&#13;&#10;        ,f.SalesOrderLineNumber AS LineNumber&#13;&#10;        ,f.OrderQuantity AS Quantity&#13;&#10;        ,f.ExtendedAmount AS Amount  &#13;&#10;    FROM&#13;&#10;        [dbo].[FactInternetSales] f&#13;&#10;    INNER JOIN [dbo].[DimDate] d&#13;&#10;        ON f.[OrderDateKey] = d.[DateKey]&#13;&#10;    INNER JOIN [dbo].[DimProduct] p&#13;&#10;        ON f.[ProductKey] = p.[ProductKey]&#13;&#10;    INNER JOIN [dbo].[DimProductSubcategory] psc&#13;&#10;        ON p.[ProductSubcategoryKey] = psc.[ProductSubcategoryKey]&#13;&#10;    INNER JOIN [dbo].[DimProductCategory] pc&#13;&#10;        ON psc.[ProductCategoryKey] = pc.[ProductCategoryKey]&#13;&#10;    INNER JOIN [dbo].[DimCustomer] c&#13;&#10;        ON f.[CustomerKey] = c.[CustomerKey]&#13;&#10;    INNER JOIN [dbo].[DimGeography] g&#13;&#10;        ON c.[GeographyKey] = g.[GeographyKey]&#13;&#10;    INNER JOIN [dbo].[DimSalesTerritory] s&#13;&#10;        ON g.[SalesTerritoryKey] = s.[SalesTerritoryKey] &#13;&#10;;&#13;&#10;&#13;&#10;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="EnglishProductCategoryName" nullable="false" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="Model" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="CustomerKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="DimCustomer"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="Region" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="Age" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="IncomeGroup" nullable="false" remarks="" size="8" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="CalendarYear" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="FiscalYear" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="Month" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="OrderNumber" nullable="false" remarks="" size="40" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="LineNumber" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="Quantity" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="12" name="Amount" nullable="false" remarks="" size="21" type="money" typeCode="3"/>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="vTargetMail" numRows="0" remarks="" schema="dbo" type="VIEW" viewSql="&#13;&#10;-- vTargetMail supports targeted mailing data model&#13;&#10;-- Uses vDMPrep to determine if a customer buys a bike and joins to DimCustomer&#13;&#10;CREATE VIEW [dbo].[vTargetMail] &#13;&#10;AS&#13;&#10;    SELECT&#13;&#10;        c.[CustomerKey], &#13;&#10;        c.[GeographyKey], &#13;&#10;        c.[CustomerAlternateKey], &#13;&#10;        c.[Title], &#13;&#10;        c.[FirstName], &#13;&#10;        c.[MiddleName], &#13;&#10;        c.[LastName], &#13;&#10;        c.[NameStyle], &#13;&#10;        c.[BirthDate], &#13;&#10;        c.[MaritalStatus], &#13;&#10;        c.[Suffix], &#13;&#10;        c.[Gender], &#13;&#10;        c.[EmailAddress], &#13;&#10;        c.[YearlyIncome], &#13;&#10;        c.[TotalChildren], &#13;&#10;        c.[NumberChildrenAtHome], &#13;&#10;        c.[EnglishEducation], &#13;&#10;        c.[SpanishEducation], &#13;&#10;        c.[FrenchEducation], &#13;&#10;        c.[EnglishOccupation], &#13;&#10;        c.[SpanishOccupation], &#13;&#10;        c.[FrenchOccupation], &#13;&#10;        c.[HouseOwnerFlag], &#13;&#10;        c.[NumberCarsOwned], &#13;&#10;        c.[AddressLine1], &#13;&#10;        c.[AddressLine2], &#13;&#10;        c.[Phone], &#13;&#10;        c.[DateFirstPurchase], &#13;&#10;        c.[CommuteDistance], &#13;&#10;        x.[Region], &#13;&#10;        x.[Age], &#13;&#10;        CASE x.[Bikes] &#13;&#10;            WHEN 0 THEN 0 &#13;&#10;            ELSE 1 &#13;&#10;        END AS [BikeBuyer]&#13;&#10;    FROM&#13;&#10;        [dbo].[DimCustomer] c INNER JOIN (&#13;&#10;            SELECT&#13;&#10;                [CustomerKey]&#13;&#10;                ,[Region]&#13;&#10;                ,[Age]&#13;&#10;                ,Sum(&#13;&#10;                    CASE [EnglishProductCategoryName] &#13;&#10;                        WHEN 'Bikes' THEN 1 &#13;&#10;                        ELSE 0 &#13;&#10;                    END) AS [Bikes]&#13;&#10;            FROM&#13;&#10;                [dbo].[vDMPrep] &#13;&#10;            GROUP BY&#13;&#10;                [CustomerKey]&#13;&#10;                ,[Region]&#13;&#10;                ,[Age]&#13;&#10;            ) AS [x]&#13;&#10;        ON c.[CustomerKey] = x.[CustomerKey]&#13;&#10;;&#13;&#10;&#13;&#10;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="CustomerKey" nullable="false" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="CustomerKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="DimCustomer"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="GeographyKey" nullable="true" remarks="" size="4" type="int" typeCode="4">
+            <parent catalog="AdventureWorksDW2022" column="GeographyKey" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" schema="dbo" table="DimGeography"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="CustomerAlternateKey" nullable="false" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="Title" nullable="true" remarks="" size="16" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="FirstName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="MiddleName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="LastName" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="NameStyle" nullable="true" remarks="" size="1" type="bit" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="BirthDate" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="MaritalStatus" nullable="true" remarks="" size="2" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="Suffix" nullable="true" remarks="" size="20" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="Gender" nullable="true" remarks="" size="2" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="EmailAddress" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="13" name="YearlyIncome" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="TotalChildren" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="NumberChildrenAtHome" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="EnglishEducation" nullable="true" remarks="" size="80" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="SpanishEducation" nullable="true" remarks="" size="80" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="FrenchEducation" nullable="true" remarks="" size="80" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="EnglishOccupation" nullable="true" remarks="" size="200" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="SpanishOccupation" nullable="true" remarks="" size="200" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="21" name="FrenchOccupation" nullable="true" remarks="" size="200" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="HouseOwnerFlag" nullable="true" remarks="" size="2" type="nchar" typeCode="-15"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="23" name="NumberCarsOwned" nullable="true" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="24" name="AddressLine1" nullable="true" remarks="" size="240" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="25" name="AddressLine2" nullable="true" remarks="" size="240" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="26" name="Phone" nullable="true" remarks="" size="40" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="27" name="DateFirstPurchase" nullable="true" remarks="" size="6" type="date" typeCode="91"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="28" name="CommuteDistance" nullable="true" remarks="" size="30" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="29" name="Region" nullable="true" remarks="" size="100" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="30" name="Age" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="31" name="BikeBuyer" nullable="false" remarks="" size="4" type="int" typeCode="4"/>
+      </table>
+      <table catalog="AdventureWorksDW2022" name="vTimeSeries" numRows="0" remarks="" schema="dbo" type="VIEW" viewSql="&#13;&#10;&#13;&#10;-- vTimeSeries view supports the creation of time series data mining models.&#13;&#10;--      - Replaces earlier bike models with successor models.&#13;&#10;--      - Abbreviates model names to improve readability in mining model viewer&#13;&#10;--      - Concatenates model and region so that table only has one input.&#13;&#10;--      - Creates a date field indexed to monthly reporting date for use in prediction.&#13;&#10;CREATE VIEW [dbo].[vTimeSeries] &#13;&#10;AS&#13;&#10;    SELECT &#13;&#10;        CASE [Model] &#13;&#10;            WHEN 'Mountain-100' THEN 'M200' &#13;&#10;            WHEN 'Road-150' THEN 'R250' &#13;&#10;            WHEN 'Road-650' THEN 'R750' &#13;&#10;            WHEN 'Touring-1000' THEN 'T1000' &#13;&#10;            ELSE Left([Model], 1) + Right([Model], 3) &#13;&#10;        END + ' ' + [Region] AS [ModelRegion] &#13;&#10;        ,(Convert(Integer, [CalendarYear]) * 100) + Convert(Integer, [Month]) AS [TimeIndex] &#13;&#10;        ,Sum([Quantity]) AS [Quantity] &#13;&#10;        ,Sum([Amount]) AS [Amount]&#13;&#10;&#9;&#9;,CalendarYear&#13;&#10;&#9;&#9;,[Month]&#13;&#10;&#9;&#9;,[dbo].[udfBuildISO8601Date] ([CalendarYear], [Month], 25)&#13;&#10;&#9;&#9;as ReportingDate&#13;&#10;    FROM &#13;&#10;        [dbo].[vDMPrep] &#13;&#10;    WHERE &#13;&#10;        [Model] IN ('Mountain-100', 'Mountain-200', 'Road-150', 'Road-250', &#13;&#10;            'Road-650', 'Road-750', 'Touring-1000') &#13;&#10;    GROUP BY &#13;&#10;        CASE [Model] &#13;&#10;            WHEN 'Mountain-100' THEN 'M200' &#13;&#10;            WHEN 'Road-150' THEN 'R250' &#13;&#10;            WHEN 'Road-650' THEN 'R750' &#13;&#10;            WHEN 'Touring-1000' THEN 'T1000' &#13;&#10;            ELSE Left(Model,1) + Right(Model,3) &#13;&#10;        END + ' ' + [Region] &#13;&#10;        ,(Convert(Integer, [CalendarYear]) * 100) + Convert(Integer, [Month])&#13;&#10;&#9;&#9;,CalendarYear&#13;&#10;&#9;&#9;,[Month]&#13;&#10;&#9;&#9;,[dbo].[udfBuildISO8601Date] ([CalendarYear], [Month], 25);&#13;&#10;&#13;&#10;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="ModelRegion" nullable="true" remarks="" size="112" type="nvarchar" typeCode="-9"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="TimeIndex" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="Quantity" nullable="true" remarks="" size="4" type="int" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="4" id="3" name="Amount" nullable="true" remarks="" size="21" type="money" typeCode="3"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="CalendarYear" nullable="false" remarks="" size="2" type="smallint" typeCode="5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="Month" nullable="false" remarks="" size="1" type="tinyint" typeCode="-6"/>
+         <column autoUpdated="false" defaultValue="null" digits="3" id="6" name="ReportingDate" nullable="true" remarks="" size="16" type="datetime" typeCode="93"/>
+      </table>
+   </tables>
+   <routines>
+      <routine dataAccess="READS" deterministic="false" name="udfBuildISO8601Date" returnType="datetime" type="FUNCTION">
+         <comment/>
+         <definition language="SQL"><![CDATA[-- ******************************************************
+-- Create User Defined Functions
+-- ******************************************************
+-- Builds an ISO 8601 format date from a year, month, and day specified as integers.
+-- This format of date should parse correctly regardless of SET DATEFORMAT and SET LANGUAGE.
+-- See SQL Server Books Online for more details.
+CREATE FUNCTION [dbo].[udfBuildISO8601Date] (@year int, @month int, @day int)
+RETURNS datetime
+AS 
+BEGIN
+	RETURN cast(convert(varchar, @year) + '-' + [dbo].[udfTwoDigitZeroFill](@month) 
+	    + '-' + [dbo].[udfTwoDigitZeroFill](@day) + 'T00:00:00' 
+	    as datetime);
+END;]]></definition>
+         <parameters>
+            <parameter mode="IN" name="@year" type="int"/>
+            <parameter mode="IN" name="@month" type="int"/>
+            <parameter mode="IN" name="@day" type="int"/>
+         </parameters>
+      </routine>
+      <routine dataAccess="READS" deterministic="false" name="udfMinimumDate" returnType="datetime" type="FUNCTION">
+         <comment/>
+         <definition language="SQL"><![CDATA[CREATE FUNCTION [dbo].[udfMinimumDate] (
+    @x DATETIME, 
+    @y DATETIME
+) RETURNS DATETIME
+AS
+BEGIN
+    DECLARE @z DATETIME
+
+    IF @x <= @y 
+        SET @z = @x 
+    ELSE 
+        SET @z = @y
+
+    RETURN(@z)
+END;]]></definition>
+         <parameters>
+            <parameter mode="IN" name="@x" type="datetime"/>
+            <parameter mode="IN" name="@y" type="datetime"/>
+         </parameters>
+      </routine>
+      <routine dataAccess="READS" deterministic="false" name="udfTwoDigitZeroFill" returnType="char" type="FUNCTION">
+         <comment/>
+         <definition language="SQL"><![CDATA[-- Converts the specified integer (which should be < 100 and > -1)
+-- into a two character string, zero filling from the left 
+-- if the number is < 10.
+CREATE FUNCTION [dbo].[udfTwoDigitZeroFill] (@number int) 
+RETURNS char(2)
+AS
+BEGIN
+	DECLARE @result char(2);
+	IF @number > 9 
+		SET @result = convert(char(2), @number);
+	ELSE
+		SET @result = convert(char(2), '0' + convert(varchar, @number));
+	RETURN @result;
+END;]]></definition>
+         <parameters>
+            <parameter mode="IN" name="@number" type="int"/>
+         </parameters>
+      </routine>
+   </routines>
+</database>

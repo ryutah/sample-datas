@@ -1,0 +1,14 @@
+{"OrganizationKey":1,"ParentOrganizationKey":null,"PercentageOfOwnership":"1","OrganizationName":"AdventureWorks Cycle","CurrencyKey":100}
+{"OrganizationKey":2,"ParentOrganizationKey":1,"PercentageOfOwnership":"1","OrganizationName":"North America Operations","CurrencyKey":100}
+{"OrganizationKey":3,"ParentOrganizationKey":14,"PercentageOfOwnership":"1","OrganizationName":"Northeast Division","CurrencyKey":100}
+{"OrganizationKey":4,"ParentOrganizationKey":14,"PercentageOfOwnership":"1","OrganizationName":"Northwest Division","CurrencyKey":100}
+{"OrganizationKey":5,"ParentOrganizationKey":14,"PercentageOfOwnership":"1","OrganizationName":"Central Division","CurrencyKey":100}
+{"OrganizationKey":6,"ParentOrganizationKey":14,"PercentageOfOwnership":"1","OrganizationName":"Southeast Division","CurrencyKey":100}
+{"OrganizationKey":7,"ParentOrganizationKey":14,"PercentageOfOwnership":"1","OrganizationName":"Southwest Division","CurrencyKey":100}
+{"OrganizationKey":8,"ParentOrganizationKey":2,"PercentageOfOwnership":".75","OrganizationName":"Canadian Division","CurrencyKey":19}
+{"OrganizationKey":9,"ParentOrganizationKey":1,"PercentageOfOwnership":"1","OrganizationName":"European Operations","CurrencyKey":36}
+{"OrganizationKey":10,"ParentOrganizationKey":1,"PercentageOfOwnership":".75","OrganizationName":"Pacific Operations","CurrencyKey":6}
+{"OrganizationKey":11,"ParentOrganizationKey":9,"PercentageOfOwnership":".50","OrganizationName":"France","CurrencyKey":36}
+{"OrganizationKey":12,"ParentOrganizationKey":9,"PercentageOfOwnership":".25","OrganizationName":"Germany","CurrencyKey":36}
+{"OrganizationKey":13,"ParentOrganizationKey":10,"PercentageOfOwnership":".50","OrganizationName":"Australia","CurrencyKey":6}
+{"OrganizationKey":14,"ParentOrganizationKey":2,"PercentageOfOwnership":"1","OrganizationName":"USA Operations","CurrencyKey":100}

@@ -1,0 +1,10 @@
+{"SalesReasonKey":1,"SalesReasonAlternateKey":1,"SalesReasonName":"Price","SalesReasonReasonType":"Other"}
+{"SalesReasonKey":2,"SalesReasonAlternateKey":2,"SalesReasonName":"On Promotion","SalesReasonReasonType":"Promotion"}
+{"SalesReasonKey":3,"SalesReasonAlternateKey":3,"SalesReasonName":"Magazine Advertisement","SalesReasonReasonType":"Marketing"}
+{"SalesReasonKey":4,"SalesReasonAlternateKey":4,"SalesReasonName":"Television  Advertisement","SalesReasonReasonType":"Marketing"}
+{"SalesReasonKey":5,"SalesReasonAlternateKey":5,"SalesReasonName":"Manufacturer","SalesReasonReasonType":"Other"}
+{"SalesReasonKey":6,"SalesReasonAlternateKey":6,"SalesReasonName":"Review","SalesReasonReasonType":"Other"}
+{"SalesReasonKey":7,"SalesReasonAlternateKey":7,"SalesReasonName":"Demo Event","SalesReasonReasonType":"Marketing"}
+{"SalesReasonKey":8,"SalesReasonAlternateKey":8,"SalesReasonName":"Sponsorship","SalesReasonReasonType":"Marketing"}
+{"SalesReasonKey":9,"SalesReasonAlternateKey":9,"SalesReasonName":"Quality","SalesReasonReasonType":"Other"}
+{"SalesReasonKey":10,"SalesReasonAlternateKey":10,"SalesReasonName":"Other","SalesReasonReasonType":"Other"}

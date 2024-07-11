@@ -1,0 +1,105 @@
+{"CurrencyKey":1,"CurrencyAlternateKey":"AFA","CurrencyName":"Afghani"}
+{"CurrencyKey":2,"CurrencyAlternateKey":"DZD","CurrencyName":"Algerian Dinar"}
+{"CurrencyKey":3,"CurrencyAlternateKey":"ARS","CurrencyName":"Argentine Peso"}
+{"CurrencyKey":4,"CurrencyAlternateKey":"AMD","CurrencyName":"Armenian Dram"}
+{"CurrencyKey":5,"CurrencyAlternateKey":"AWG","CurrencyName":"Aruban Guilder"}
+{"CurrencyKey":6,"CurrencyAlternateKey":"AUD","CurrencyName":"Australian Dollar"}
+{"CurrencyKey":7,"CurrencyAlternateKey":"AZM","CurrencyName":"Azerbaijanian Manat"}
+{"CurrencyKey":8,"CurrencyAlternateKey":"BSD","CurrencyName":"Bahamian Dollar"}
+{"CurrencyKey":9,"CurrencyAlternateKey":"BHD","CurrencyName":"Bahraini Dinar"}
+{"CurrencyKey":10,"CurrencyAlternateKey":"THB","CurrencyName":"Baht"}
+{"CurrencyKey":11,"CurrencyAlternateKey":"PAB","CurrencyName":"Balboa"}
+{"CurrencyKey":12,"CurrencyAlternateKey":"BBD","CurrencyName":"Barbados Dollar"}
+{"CurrencyKey":13,"CurrencyAlternateKey":"BEF","CurrencyName":"Belgian Franc"}
+{"CurrencyKey":14,"CurrencyAlternateKey":"VEB","CurrencyName":"Bolivar"}
+{"CurrencyKey":15,"CurrencyAlternateKey":"BOB","CurrencyName":"Boliviano"}
+{"CurrencyKey":16,"CurrencyAlternateKey":"BRL","CurrencyName":"Brazilian Real"}
+{"CurrencyKey":17,"CurrencyAlternateKey":"BND","CurrencyName":"Brunei Dollar"}
+{"CurrencyKey":18,"CurrencyAlternateKey":"BGN","CurrencyName":"Bulgarian Lev"}
+{"CurrencyKey":19,"CurrencyAlternateKey":"CAD","CurrencyName":"Canadian Dollar"}
+{"CurrencyKey":20,"CurrencyAlternateKey":"GHC","CurrencyName":"Cedi"}
+{"CurrencyKey":21,"CurrencyAlternateKey":"XOF","CurrencyName":"CFA Franc BCEAO"}
+{"CurrencyKey":22,"CurrencyAlternateKey":"CLP","CurrencyName":"Chilean Peso"}
+{"CurrencyKey":23,"CurrencyAlternateKey":"COP","CurrencyName":"Colombian Peso"}
+{"CurrencyKey":24,"CurrencyAlternateKey":"CRC","CurrencyName":"Costa Rican Colon"}
+{"CurrencyKey":25,"CurrencyAlternateKey":"HRK","CurrencyName":"Croatian Kuna"}
+{"CurrencyKey":26,"CurrencyAlternateKey":"CYP","CurrencyName":"Cyprus Pound"}
+{"CurrencyKey":27,"CurrencyAlternateKey":"CZK","CurrencyName":"Czech Koruna"}
+{"CurrencyKey":28,"CurrencyAlternateKey":"DKK","CurrencyName":"Danish Krone"}
+{"CurrencyKey":29,"CurrencyAlternateKey":"DEM","CurrencyName":"Deutsche Mark"}
+{"CurrencyKey":30,"CurrencyAlternateKey":"DOP","CurrencyName":"Dominican Peso"}
+{"CurrencyKey":31,"CurrencyAlternateKey":"VND","CurrencyName":"Dong"}
+{"CurrencyKey":32,"CurrencyAlternateKey":"GRD","CurrencyName":"Drachma"}
+{"CurrencyKey":33,"CurrencyAlternateKey":"EGP","CurrencyName":"Egyptian Pound"}
+{"CurrencyKey":34,"CurrencyAlternateKey":"SVC","CurrencyName":"El Salvador Colon"}
+{"CurrencyKey":35,"CurrencyAlternateKey":"AED","CurrencyName":"Emirati Dirham"}
+{"CurrencyKey":36,"CurrencyAlternateKey":"EUR","CurrencyName":"EURO"}
+{"CurrencyKey":37,"CurrencyAlternateKey":"FJD","CurrencyName":"Fiji Dollar"}
+{"CurrencyKey":38,"CurrencyAlternateKey":"HUF","CurrencyName":"Forint"}
+{"CurrencyKey":39,"CurrencyAlternateKey":"FRF","CurrencyName":"French Franc"}
+{"CurrencyKey":40,"CurrencyAlternateKey":"PYG","CurrencyName":"Guarani"}
+{"CurrencyKey":41,"CurrencyAlternateKey":"HKD","CurrencyName":"Hong Kong Dollar"}
+{"CurrencyKey":42,"CurrencyAlternateKey":"ISK","CurrencyName":"Iceland Krona"}
+{"CurrencyKey":43,"CurrencyAlternateKey":"INR","CurrencyName":"Indian Rupee"}
+{"CurrencyKey":44,"CurrencyAlternateKey":"IEP","CurrencyName":"Irish Pound"}
+{"CurrencyKey":45,"CurrencyAlternateKey":"ITL","CurrencyName":"Italian Lira"}
+{"CurrencyKey":46,"CurrencyAlternateKey":"JMD","CurrencyName":"Jamaican Dollar"}
+{"CurrencyKey":47,"CurrencyAlternateKey":"JOD","CurrencyName":"Jordanian Dinar"}
+{"CurrencyKey":48,"CurrencyAlternateKey":"KES","CurrencyName":"Kenyan Shilling"}
+{"CurrencyKey":49,"CurrencyAlternateKey":"EEK","CurrencyName":"Kroon"}
+{"CurrencyKey":50,"CurrencyAlternateKey":"KWD","CurrencyName":"Kuwaiti Dinar"}
+{"CurrencyKey":51,"CurrencyAlternateKey":"AOA","CurrencyName":"Kwanza"}
+{"CurrencyKey":52,"CurrencyAlternateKey":"LVL","CurrencyName":"Latvian Lats"}
+{"CurrencyKey":53,"CurrencyAlternateKey":"LBP","CurrencyName":"Lebanese Pound"}
+{"CurrencyKey":54,"CurrencyAlternateKey":"ALL","CurrencyName":"Lek"}
+{"CurrencyKey":55,"CurrencyAlternateKey":"ROL","CurrencyName":"Leu"}
+{"CurrencyKey":56,"CurrencyAlternateKey":"LTL","CurrencyName":"Lithuanian Litas"}
+{"CurrencyKey":57,"CurrencyAlternateKey":"MYR","CurrencyName":"Malaysian Ringgit"}
+{"CurrencyKey":58,"CurrencyAlternateKey":"MTL","CurrencyName":"Maltese Lira"}
+{"CurrencyKey":59,"CurrencyAlternateKey":"FIM","CurrencyName":"Markka"}
+{"CurrencyKey":60,"CurrencyAlternateKey":"MUR","CurrencyName":"Mauritius Rupee"}
+{"CurrencyKey":61,"CurrencyAlternateKey":"MXN","CurrencyName":"Mexican Peso"}
+{"CurrencyKey":62,"CurrencyAlternateKey":"MAD","CurrencyName":"Moroccan Dirham"}
+{"CurrencyKey":63,"CurrencyAlternateKey":"NGN","CurrencyName":"Naira"}
+{"CurrencyKey":64,"CurrencyAlternateKey":"NAD","CurrencyName":"Namibia Dollar"}
+{"CurrencyKey":65,"CurrencyAlternateKey":"NPR","CurrencyName":"Nepalese Rupee"}
+{"CurrencyKey":66,"CurrencyAlternateKey":"ANG","CurrencyName":"Netherlands Antillian Guilder"}
+{"CurrencyKey":67,"CurrencyAlternateKey":"NLG","CurrencyName":"Netherlands Guilder"}
+{"CurrencyKey":68,"CurrencyAlternateKey":"ILS","CurrencyName":"New Israeli Shekel"}
+{"CurrencyKey":69,"CurrencyAlternateKey":"TWD","CurrencyName":"New Taiwan Dollar"}
+{"CurrencyKey":70,"CurrencyAlternateKey":"NZD","CurrencyName":"New Zealand Dollar"}
+{"CurrencyKey":71,"CurrencyAlternateKey":"BTN","CurrencyName":"Ngultrum"}
+{"CurrencyKey":72,"CurrencyAlternateKey":"NOK","CurrencyName":"Norwegian Krone"}
+{"CurrencyKey":73,"CurrencyAlternateKey":"PEN","CurrencyName":"Nuevo Sol"}
+{"CurrencyKey":74,"CurrencyAlternateKey":"OMR","CurrencyName":"Omani Rial"}
+{"CurrencyKey":75,"CurrencyAlternateKey":"PKR","CurrencyName":"Pakistan Rupee"}
+{"CurrencyKey":76,"CurrencyAlternateKey":"PHP","CurrencyName":"Philippine Peso"}
+{"CurrencyKey":77,"CurrencyAlternateKey":"PLZ","CurrencyName":"Polish Zloty(old)"}
+{"CurrencyKey":78,"CurrencyAlternateKey":"PTE","CurrencyName":"Portuguese Escudo"}
+{"CurrencyKey":79,"CurrencyAlternateKey":"GTQ","CurrencyName":"Quetzal"}
+{"CurrencyKey":80,"CurrencyAlternateKey":"ZAR","CurrencyName":"Rand"}
+{"CurrencyKey":81,"CurrencyAlternateKey":"MVR","CurrencyName":"Rufiyaa"}
+{"CurrencyKey":82,"CurrencyAlternateKey":"IDR","CurrencyName":"Rupiah"}
+{"CurrencyKey":83,"CurrencyAlternateKey":"RUB","CurrencyName":"Russian Ruble"}
+{"CurrencyKey":84,"CurrencyAlternateKey":"RUR","CurrencyName":"Russian Ruble(old)"}
+{"CurrencyKey":85,"CurrencyAlternateKey":"SAR","CurrencyName":"Saudi Riyal"}
+{"CurrencyKey":86,"CurrencyAlternateKey":"ATS","CurrencyName":"Shilling"}
+{"CurrencyKey":87,"CurrencyAlternateKey":"SGD","CurrencyName":"Singapore Dollar"}
+{"CurrencyKey":88,"CurrencyAlternateKey":"SKK","CurrencyName":"Slovak Koruna"}
+{"CurrencyKey":89,"CurrencyAlternateKey":"ESP","CurrencyName":"Spanish Peseta"}
+{"CurrencyKey":90,"CurrencyAlternateKey":"LKR","CurrencyName":"Sri Lankan Rupee"}
+{"CurrencyKey":91,"CurrencyAlternateKey":"SEK","CurrencyName":"Swedish Krona"}
+{"CurrencyKey":92,"CurrencyAlternateKey":"CHF","CurrencyName":"Swiss Franc"}
+{"CurrencyKey":93,"CurrencyAlternateKey":"BDT","CurrencyName":"Taka"}
+{"CurrencyKey":94,"CurrencyAlternateKey":"SIT","CurrencyName":"Tolar"}
+{"CurrencyKey":95,"CurrencyAlternateKey":"TTD","CurrencyName":"Trinidad and Tobago Dollar"}
+{"CurrencyKey":96,"CurrencyAlternateKey":"TND","CurrencyName":"Tunisian Dinar"}
+{"CurrencyKey":97,"CurrencyAlternateKey":"TRL","CurrencyName":"Turkish Lira"}
+{"CurrencyKey":98,"CurrencyAlternateKey":"GBP","CurrencyName":"United Kingdom Pound"}
+{"CurrencyKey":99,"CurrencyAlternateKey":"UYU","CurrencyName":"Uruguayan Peso"}
+{"CurrencyKey":100,"CurrencyAlternateKey":"USD","CurrencyName":"US Dollar"}
+{"CurrencyKey":101,"CurrencyAlternateKey":"KRW","CurrencyName":"Won"}
+{"CurrencyKey":102,"CurrencyAlternateKey":"JPY","CurrencyName":"Yen"}
+{"CurrencyKey":103,"CurrencyAlternateKey":"CNY","CurrencyName":"Yuan Renminbi"}
+{"CurrencyKey":104,"CurrencyAlternateKey":"ZWD","CurrencyName":"Zimbabwe Dollar"}
+{"CurrencyKey":105,"CurrencyAlternateKey":"PLN","CurrencyName":"Zloty"}

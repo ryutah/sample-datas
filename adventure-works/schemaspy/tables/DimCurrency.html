@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>DimCurrency - AdventureWorksDW2022.dbo</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="../bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="../bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="../bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="../bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="../bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='../fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='../fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="../bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="../bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="../schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="../bower/html5shiv/html5shiv.min.js"></script>
+        <script src="../bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="../index.html" class="navbar-brand"><b>AdventureWorksDW2022</b></a><span class="navbar-brand" style="padding-left: 0">.dbo</span>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="../index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="../columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="../constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="../relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="../orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="../anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="../routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>DimCurrency</h1><p><span id="recordNumber">105</span> rows</p><br />
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                            <h3 id="Columns" class="box-title">Columns</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table
+                                    id="standard_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
+                                <thead align='left'>
+                                <tr>
+                                    <th>Column</th>
+                                    <th>Type</th>
+                                    <th>Size</th>
+                                    <th title='Are nulls allowed?'>Nulls</th>
+                                    <th title='Is column automatically updated?'>Auto</th>
+                                    <th title='Default value'>Default</th>
+                                    <th title='Columns in tables that reference this column'>Children</th>
+                                    <th title='Columns in tables that are referenced by this column'>Parents</th>
+                                    <th title='Comments' class="toggle"><span>Comments</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="CurrencyKey">CurrencyKey</span></td>
+                                    <td>int identity</td>
+                                    <td>4</td>
+                                    <td title=''></td>
+                                    <td title='Automatically updated by the database'>√</td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                            <tr>
+                                                <td title="DimOrganization.CurrencyKey references DimCurrency.CurrencyKey via FK_DimOrganization_DimCurrency"><a href='DimOrganization.html'>DimOrganization</a><span class='relatedKey'>.CurrencyKey</span></td>
+                                                <td class="constraint detail">FK_DimOrganization_DimCurrency</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="FactCurrencyRate.CurrencyKey references DimCurrency.CurrencyKey via FK_FactCurrencyRate_DimCurrency"><a href='FactCurrencyRate.html'>FactCurrencyRate</a><span class='relatedKey'>.CurrencyKey</span></td>
+                                                <td class="constraint detail">FK_FactCurrencyRate_DimCurrency</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="FactInternetSales.CurrencyKey references DimCurrency.CurrencyKey via FK_FactInternetSales_DimCurrency"><a href='FactInternetSales.html'>FactInternetSales</a><span class='relatedKey'>.CurrencyKey</span></td>
+                                                <td class="constraint detail">FK_FactInternetSales_DimCurrency</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="FactResellerSales.CurrencyKey references DimCurrency.CurrencyKey via FK_FactResellerSales_DimCurrency"><a href='FactResellerSales.html'>FactResellerSales</a><span class='relatedKey'>.CurrencyKey</span></td>
+                                                <td class="constraint detail">FK_FactResellerSales_DimCurrency</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td title="NewFactCurrencyRate.CurrencyKey&#39;s name implies that it&#39;s a child of DimCurrency.CurrencyKey, but it doesn&#39;t reference that column."><a href='NewFactCurrencyRate.html'>NewFactCurrencyRate</a><span class='relatedKey'>.CurrencyKey</span></td>
+                                                <td class="constraint detail">Implied Constraint</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class='indexedColumn' title='Indexed'><i class='fa fa-sitemap fa-rotate-120' style='padding-right: 5px;'></i><span id="CurrencyAlternateKey">CurrencyAlternateKey</span></td>
+                                    <td>nchar</td>
+                                    <td>6</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><span id="CurrencyName">CurrencyName</span></td>
+                                    <td>nvarchar</td>
+                                    <td>100</td>
+                                    <td title=''></td>
+                                    <td title=''></td>
+                                    <td>null</td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td>
+                                        <table border='0' cellspacing='0' cellpadding='0'>
+                                        </table>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-sitemap"></i>
+                            <h3 id="Indexes" class="box-title">Indexes</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <table
+                                    id="indexes_table"
+                                    class="table table-bordered table-striped dataTable"
+                                    role="grid"
+                                    data-paging="true"
+                                    data-page-length="10"
+                                    data-length-change="false">
+                                <thead>
+                                <tr>
+                                    <th>Constraint Name</th>
+                                    <th>Type</th>
+                                    <th>Sort</th>
+                                    <th>Column(s)</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> PK_DimCurrency_CurrencyKey</td>
+                                    <td>Primary key</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>CurrencyKey</td>
+                                </tr>
+                                <tr>
+                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> AK_DimCurrency_CurrencyAlternateKey</td>
+                                    <td>Must be unique</td>
+                                    <td><span title='Ascending'>Asc</span></td>
+                                    <td>CurrencyAlternateKey</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div><!-- /.box-body -->
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 id="Relationships" class="box-title">Relationships</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom"><!-- Tabs within a box -->
+                                <h5>Close relationships within degrees of separation</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
+                                    <li class=""><a href="#twodegreesDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two degrees</a></li>
+                                    <li class=""><a href="#oneimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">One implied</a></li>
+                                    <li class=""><a href="#twoimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">Two implied</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
+<area shape="rect" id="node1" href="DimOrganization.html" target="_top" title="DimOrganization" alt="" coords="384,5,629,181">
+<area shape="rect" id="node2" href="DimCurrency.html" target="_top" title="DimCurrency" alt="" coords="5,367,340,524">
+<area shape="rect" id="node3" href="FactCurrencyRate.html" target="_top" title="FactCurrencyRate" alt="" coords="395,199,618,345">
+<area shape="rect" id="node4" href="FactInternetSales.html" target="_top" title="FactInternetSales" alt="" coords="387,363,627,744">
+<area shape="rect" id="node5" href="FactResellerSales.html" target="_top" title="FactResellerSales" alt="" coords="387,761,627,1172">
+</map>
+                                        <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/DimCurrency.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twodegreesDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagram" name="twoDegreesRelationshipsDiagram">
+<area shape="rect" id="node1" href="DimEmployee.html" target="_top" title="DimEmployee" alt="" coords="346,585,535,673">
+<area shape="rect" id="node2" href="DimSalesTerritory.html" target="_top" title="DimSalesTerritory" alt="" coords="5,585,229,673">
+<area shape="rect" id="node3" href="DimOrganization.html" target="_top" title="DimOrganization" alt="" coords="652,1032,897,1208">
+<area shape="rect" id="node4" href="DimCurrency.html" target="_top" title="DimCurrency" alt="" coords="273,848,608,1005">
+<area shape="rect" id="node5" href="FactCurrencyRate.html" target="_top" title="FactCurrencyRate" alt="" coords="663,868,886,1015">
+<area shape="rect" id="node6" href="DimDate.html" target="_top" title="DimDate" alt="" coords="362,375,519,463">
+<area shape="rect" id="node7" href="FactFinance.html" target="_top" title="FactFinance" alt="" coords="993,707,1168,795">
+<area shape="rect" id="node8" href="FactInternetSales.html" target="_top" title="FactInternetSales" alt="" coords="655,5,895,387">
+<area shape="rect" id="node9" href="DimCustomer.html" target="_top" title="DimCustomer" alt="" coords="346,125,535,213">
+<area shape="rect" id="node10" href="DimProduct.html" target="_top" title="DimProduct" alt="" coords="353,269,528,357">
+<area shape="rect" id="node11" href="DimPromotion.html" target="_top" title="DimPromotion" alt="" coords="342,691,539,779">
+<area shape="rect" id="node12" href="FactInternetSalesReason.html" target="_top" title="FactInternetSalesReason" alt="" coords="941,257,1220,345">
+<area shape="rect" id="node13" href="FactResellerSales.html" target="_top" title="FactResellerSales" alt="" coords="655,440,895,851">
+<area shape="rect" id="node14" href="DimReseller.html" target="_top" title="DimReseller" alt="" coords="353,480,529,568">
+</map>
+                                        <a name='diagram'><img id="twodegreesDegreeImg" src="../diagrams/tables/DimCurrency.2degrees.png" usemap="#twoDegreesRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="oneimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="oneDegreeRelationshipsDiagramImplied" name="oneDegreeRelationshipsDiagramImplied">
+<area shape="rect" id="node1" href="DimOrganization.html" target="_top" title="DimOrganization" alt="" coords="391,5,636,181">
+<area shape="rect" id="node2" href="DimCurrency.html" target="_top" title="DimCurrency" alt="" coords="5,536,340,693">
+<area shape="rect" id="node3" href="FactCurrencyRate.html" target="_top" title="FactCurrencyRate" alt="" coords="402,199,625,345">
+<area shape="rect" id="node4" href="FactInternetSales.html" target="_top" title="FactInternetSales" alt="" coords="393,363,633,744">
+<area shape="rect" id="node5" href="FactResellerSales.html" target="_top" title="FactResellerSales" alt="" coords="393,761,633,1172">
+<area shape="rect" id="node6" href="NewFactCurrencyRate.html" target="_top" title="NewFactCurrencyRate" alt="" coords="384,1189,643,1336">
+</map>
+                                        <a name='diagram'><img id="oneimpliedDegreeImg" src="../diagrams/tables/DimCurrency.implied1degrees.png" usemap="#oneDegreeRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="twoimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="twoDegreesRelationshipsDiagramImplied" name="twoDegreesRelationshipsDiagramImplied">
+<area shape="rect" id="node1" href="DimEmployee.html" target="_top" title="DimEmployee" alt="" coords="346,589,535,677">
+<area shape="rect" id="node2" href="DimSalesTerritory.html" target="_top" title="DimSalesTerritory" alt="" coords="5,589,229,677">
+<area shape="rect" id="node3" href="DimOrganization.html" target="_top" title="DimOrganization" alt="" coords="659,1196,904,1372">
+<area shape="rect" id="node4" href="DimCurrency.html" target="_top" title="DimCurrency" alt="" coords="273,865,608,1023">
+<area shape="rect" id="node5" href="FactCurrencyRate.html" target="_top" title="FactCurrencyRate" alt="" coords="670,1032,893,1179">
+<area shape="rect" id="node6" href="DimDate.html" target="_top" title="DimDate" alt="" coords="362,379,519,467">
+<area shape="rect" id="node7" href="FactFinance.html" target="_top" title="FactFinance" alt="" coords="1007,788,1181,876">
+<area shape="rect" id="node8" href="FactInternetSales.html" target="_top" title="FactInternetSales" alt="" coords="661,5,901,387">
+<area shape="rect" id="node9" href="DimCustomer.html" target="_top" title="DimCustomer" alt="" coords="346,125,535,213">
+<area shape="rect" id="node10" href="DimProduct.html" target="_top" title="DimProduct" alt="" coords="353,273,528,361">
+<area shape="rect" id="node11" href="DimPromotion.html" target="_top" title="DimPromotion" alt="" coords="342,695,539,783">
+<area shape="rect" id="node12" href="FactInternetSalesReason.html" target="_top" title="FactInternetSalesReason" alt="" coords="955,257,1233,345">
+<area shape="rect" id="node13" href="FactResellerSales.html" target="_top" title="FactResellerSales" alt="" coords="661,440,901,851">
+<area shape="rect" id="node14" href="DimReseller.html" target="_top" title="DimReseller" alt="" coords="353,484,529,572">
+<area shape="rect" id="node15" href="NewFactCurrencyRate.html" target="_top" title="NewFactCurrencyRate" alt="" coords="652,868,911,1015">
+</map>
+                                        <a name='diagram'><img id="twoimpliedDegreeImg" src="../diagrams/tables/DimCurrency.implied2degrees.png" usemap="#twoDegreesRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+                <script>
+                    var config = {
+                        pagination: true
+                    }
+                </script>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.4</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="../bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="../bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="../bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="../bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="../bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="../bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="../bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="../bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="../bower/pdfmake/pdfmake.min.js"></script>
+        <script src="../bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="../bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="../bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="../bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="../bower/codemirror/codemirror.js"></script>
+        <script src="../bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="table.js"></script>
+        <script src="../schemaSpy.js"></script>
+    </body>
+</html>

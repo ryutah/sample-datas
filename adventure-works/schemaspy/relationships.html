@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>AdventureWorksDW2022.dbo</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+        <!-- Bootstrap 3.3.5 -->
+        <link rel="stylesheet" href="bower/admin-lte/bootstrap/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="bower/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="bower/ionicons/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="bower/datatables.net-bs/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="bower/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+        <!-- Code Mirror -->
+        <link rel="stylesheet" href="bower/codemirror/codemirror.css">
+        <!-- Fonts -->
+        <link href='fonts/indieflower/indie-flower.css' rel='stylesheet' type='text/css'>
+        <link href='fonts/source-sans-pro/source-sans-pro.css' rel='stylesheet' type='text/css'>
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/AdminLTE.min.css">
+        <!-- Salvattore -->
+        <link rel="stylesheet" href="bower/salvattore/salvattore.css">
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+        <link rel="stylesheet" href="bower/admin-lte/dist/css/skins/_all-skins.min.css">
+        <!-- SchemaSpy -->
+        <link rel="stylesheet" href="schemaSpy.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="bower/html5shiv/html5shiv.min.js"></script>
+        <script src="bower/respond/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
+    <body class="hold-transition skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a href="index.html" class="navbar-brand"><b>AdventureWorksDW2022</b></a><span class="navbar-brand" style="padding-left: 0">.dbo</span>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index.html">Tables <span class="sr-only">(current)</span></a></li>
+                                <li><a href="columns.html" title="All of the columns in the schema">Columns</a></li>
+                                <li><a href="constraints.html" title="Useful for diagnosing error messages that just give constraint name or number">Constraints</a></li>
+                                <li><a href="relationships.html" title="Diagram of table relationships">Relationships</a></li>
+                                <li><a href="orphans.html" title="View of tables with neither parents nor children">Orphan&nbsp;Tables</a></li>
+                                <li><a href="anomalies.html" title="Things that might not be quite right">Anomalies</a></li>
+                                <li><a href="routines.html" title="Procedures and functions">Routines</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Main content -->
+            <!-- Full Width Column -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>All Relationships</h1>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 class="box-title">Diagrams</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <h5>By default only columns that are primary keys, foreign keys or indexes are shown.</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#compactDegreeImg-chart" data-toggle="tab" aria-expanded="true">Compact</a></li>
+                                    <li class=""><a href="#largeDegreeImg-chart" data-toggle="tab" aria-expanded="true">Large</a></li>
+                                    <li class=""><a href="#compactimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">Compact Implied</a></li>
+                                    <li class=""><a href="#largeimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">Large Implied</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="compactDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="compactRelationshipsDiagram" name="compactRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/DimDate.html" target="_top" title="DimDate" alt="" coords="767,856,1021,1003">
+<area shape="rect" id="node2" href="tables/DimCurrency.html" target="_top" title="DimCurrency" alt="" coords="781,1249,1007,1396">
+<area shape="rect" id="node3" href="tables/FactInternetSales.html" target="_top" title="FactInternetSales" alt="" coords="1162,421,1402,803">
+<area shape="rect" id="node7" href="tables/DimCustomer.html" target="_top" title="DimCustomer" alt="" coords="770,265,1018,441">
+<area shape="rect" id="node16" href="tables/DimSalesTerritory.html" target="_top" title="DimSalesTerritory" alt="" coords="19,1531,285,1677">
+<area shape="rect" id="node19" href="tables/DimPromotion.html" target="_top" title="DimPromotion" alt="" coords="760,1064,1028,1211">
+<area shape="rect" id="node25" href="tables/DimProduct.html" target="_top" title="DimProduct" alt="" coords="770,459,1018,664">
+<area shape="rect" id="node4" href="tables/DimOrganization.html" target="_top" title="DimOrganization" alt="" coords="1159,1993,1405,2169">
+<area shape="rect" id="node5" href="tables/DimSalesReason.html" target="_top" title="DimSalesReason" alt="" coords="1155,1013,1409,1131">
+<area shape="rect" id="node6" href="tables/DimScenario.html" target="_top" title="DimScenario" alt="" coords="1192,2375,1372,2492">
+<area shape="rect" id="node21" href="tables/DimGeography.html" target="_top" title="DimGeography" alt="" coords="365,1453,642,1600">
+<area shape="rect" id="node8" href="tables/FactSurveyResponse.html" target="_top" title="FactSurveyResponse" alt="" coords="1124,5,1440,240">
+<area shape="rect" id="node9" href="tables/FactSalesQuota.html" target="_top" title="FactSalesQuota" alt="" coords="1180,1776,1384,1952">
+<area shape="rect" id="node10" href="tables/DimEmployee.html" target="_top" title="DimEmployee" alt="" coords="708,1677,1080,1853">
+<area shape="rect" id="node11" href="tables/FactCallCenter.html" target="_top" title="FactCallCenter" alt="" coords="1171,820,1393,996">
+<area shape="rect" id="node12" href="tables/FactProductInventory.html" target="_top" title="FactProductInventory" alt="" coords="1155,257,1409,404">
+<area shape="rect" id="node13" href="tables/DimReseller.html" target="_top" title="DimReseller" alt="" coords="785,1424,1003,1600">
+<area shape="rect" id="node14" href="tables/FactInternetSalesReason.html" target="_top" title="FactInternetSalesReason" alt="" coords="1484,656,1763,808">
+<area shape="rect" id="node15" href="tables/FactResellerSales.html" target="_top" title="FactResellerSales" alt="" coords="1162,1348,1402,1759">
+<area shape="rect" id="node17" href="tables/FactFinance.html" target="_top" title="FactFinance" alt="" coords="1511,2152,1736,2387">
+<area shape="rect" id="node23" href="tables/DimAccount.html" target="_top" title="DimAccount" alt="" coords="1125,2533,1439,2680">
+<area shape="rect" id="node24" href="tables/DimDepartmentGroup.html" target="_top" title="DimDepartmentGroup" alt="" coords="1143,2211,1421,2357">
+<area shape="rect" id="node18" href="tables/FactCurrencyRate.html" target="_top" title="FactCurrencyRate" alt="" coords="1171,1184,1393,1331">
+<area shape="rect" id="node20" href="tables/DimProductCategory.html" target="_top" title="DimProductCategory" alt="" coords="5,576,299,723">
+<area shape="rect" id="node22" href="tables/DimProductSubcategory.html" target="_top" title="DimProductSubcategory" alt="" coords="343,517,664,693">
+</map>
+                                        <a name='diagram'><img id="compactDegreeImg" src="diagrams/summary/relationships.real.compact.png" usemap="#compactRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="largeDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="largeRelationshipsDiagram" name="largeRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/DimDate.html" target="_top" title="DimDate" alt="" coords="767,2111,1021,2732">
+<area shape="rect" id="node2" href="tables/DimCurrency.html" target="_top" title="DimCurrency" alt="" coords="781,3300,1007,3452">
+<area shape="rect" id="node3" href="tables/FactInternetSales.html" target="_top" title="FactInternetSales" alt="" coords="1162,1267,1402,2093">
+<area shape="rect" id="node7" href="tables/DimCustomer.html" target="_top" title="DimCustomer" alt="" coords="770,5,1018,920">
+<area shape="rect" id="node16" href="tables/DimSalesTerritory.html" target="_top" title="DimSalesTerritory" alt="" coords="19,3929,285,4169">
+<area shape="rect" id="node19" href="tables/DimPromotion.html" target="_top" title="DimPromotion" alt="" coords="760,2749,1028,3283">
+<area shape="rect" id="node25" href="tables/DimProduct.html" target="_top" title="DimProduct" alt="" coords="770,937,1018,2057">
+<area shape="rect" id="node4" href="tables/DimOrganization.html" target="_top" title="DimOrganization" alt="" coords="1159,4249,1405,4460">
+<area shape="rect" id="node5" href="tables/DimSalesReason.html" target="_top" title="DimSalesReason" alt="" coords="1155,2603,1409,2784">
+<area shape="rect" id="node6" href="tables/DimScenario.html" target="_top" title="DimScenario" alt="" coords="1192,4671,1372,4793">
+<area shape="rect" id="node21" href="tables/DimGeography.html" target="_top" title="DimGeography" alt="" coords="365,3499,642,3885">
+<area shape="rect" id="node8" href="tables/FactSurveyResponse.html" target="_top" title="FactSurveyResponse" alt="" coords="1124,305,1440,604">
+<area shape="rect" id="node9" href="tables/FactSalesQuota.html" target="_top" title="FactSalesQuota" alt="" coords="1180,3939,1384,4208">
+<area shape="rect" id="node10" href="tables/DimEmployee.html" target="_top" title="DimEmployee" alt="" coords="708,4197,1080,5171">
+<area shape="rect" id="node11" href="tables/FactCallCenter.html" target="_top" title="FactCallCenter" alt="" coords="1171,2111,1393,2585">
+<area shape="rect" id="node12" href="tables/FactProductInventory.html" target="_top" title="FactProductInventory" alt="" coords="1155,959,1409,1228">
+<area shape="rect" id="node13" href="tables/DimReseller.html" target="_top" title="DimReseller" alt="" coords="785,3469,1003,4120">
+<area shape="rect" id="node14" href="tables/FactInternetSalesReason.html" target="_top" title="FactInternetSalesReason" alt="" coords="1484,1501,1763,1653">
+<area shape="rect" id="node15" href="tables/FactResellerSales.html" target="_top" title="FactResellerSales" alt="" coords="1162,3065,1402,3921">
+<area shape="rect" id="node17" href="tables/FactFinance.html" target="_top" title="FactFinance" alt="" coords="1511,4413,1736,4712">
+<area shape="rect" id="node23" href="tables/DimAccount.html" target="_top" title="DimAccount" alt="" coords="1125,4835,1439,5192">
+<area shape="rect" id="node24" href="tables/DimDepartmentGroup.html" target="_top" title="DimDepartmentGroup" alt="" coords="1143,4501,1421,4653">
+<area shape="rect" id="node18" href="tables/FactCurrencyRate.html" target="_top" title="FactCurrencyRate" alt="" coords="1171,2837,1393,3048">
+<area shape="rect" id="node20" href="tables/DimProductCategory.html" target="_top" title="DimProductCategory" alt="" coords="5,1143,299,1353">
+<area shape="rect" id="node22" href="tables/DimProductSubcategory.html" target="_top" title="DimProductSubcategory" alt="" coords="343,996,664,1236">
+</map>
+                                        <a name='diagram'><img id="largeDegreeImg" src="diagrams/summary/relationships.real.large.png" usemap="#largeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="compactimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="compactImpliedRelationshipsDiagram" name="compactImpliedRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/DimDate.html" target="_top" title="DimDate" alt="" coords="767,1543,1021,1689">
+<area shape="rect" id="node2" href="tables/DimCurrency.html" target="_top" title="DimCurrency" alt="" coords="781,387,1007,533">
+<area shape="rect" id="node3" href="tables/FactInternetSales.html" target="_top" title="FactInternetSales" alt="" coords="1162,1455,1402,1836">
+<area shape="rect" id="node7" href="tables/DimCustomer.html" target="_top" title="DimCustomer" alt="" coords="770,2684,1018,2860">
+<area shape="rect" id="node16" href="tables/DimSalesTerritory.html" target="_top" title="DimSalesTerritory" alt="" coords="19,2349,285,2496">
+<area shape="rect" id="node19" href="tables/DimPromotion.html" target="_top" title="DimPromotion" alt="" coords="760,1869,1028,2016">
+<area shape="rect" id="node26" href="tables/DimProduct.html" target="_top" title="DimProduct" alt="" coords="770,1320,1018,1525">
+<area shape="rect" id="node4" href="tables/DimOrganization.html" target="_top" title="DimOrganization" alt="" coords="1159,29,1405,205">
+<area shape="rect" id="node5" href="tables/DimSalesReason.html" target="_top" title="DimSalesReason" alt="" coords="1155,2948,1409,3065">
+<area shape="rect" id="node6" href="tables/DimScenario.html" target="_top" title="DimScenario" alt="" coords="1192,939,1372,1056">
+<area shape="rect" id="node22" href="tables/DimGeography.html" target="_top" title="DimGeography" alt="" coords="365,2629,642,2776">
+<area shape="rect" id="node8" href="tables/FactSurveyResponse.html" target="_top" title="FactSurveyResponse" alt="" coords="1124,2475,1440,2709">
+<area shape="rect" id="node20" href="tables/DimProductCategory.html" target="_top" title="DimProductCategory" alt="" coords="5,1861,299,2008">
+<area shape="rect" id="node23" href="tables/DimProductSubcategory.html" target="_top" title="DimProductSubcategory" alt="" coords="343,1640,664,1816">
+<area shape="rect" id="node9" href="tables/FactSalesQuota.html" target="_top" title="FactSalesQuota" alt="" coords="1180,2281,1384,2457">
+<area shape="rect" id="node10" href="tables/DimEmployee.html" target="_top" title="DimEmployee" alt="" coords="708,2287,1080,2463">
+<area shape="rect" id="node11" href="tables/FactCallCenter.html" target="_top" title="FactCallCenter" alt="" coords="1171,1261,1393,1437">
+<area shape="rect" id="node12" href="tables/FactProductInventory.html" target="_top" title="FactProductInventory" alt="" coords="1155,775,1409,921">
+<area shape="rect" id="node13" href="tables/DimReseller.html" target="_top" title="DimReseller" alt="" coords="785,2033,1003,2209">
+<area shape="rect" id="node14" href="tables/FactInternetSalesReason.html" target="_top" title="FactInternetSalesReason" alt="" coords="1484,1689,1763,1841">
+<area shape="rect" id="node15" href="tables/FactResellerSales.html" target="_top" title="FactResellerSales" alt="" coords="1162,1853,1402,2264">
+<area shape="rect" id="node17" href="tables/FactFinance.html" target="_top" title="FactFinance" alt="" coords="1511,552,1736,787">
+<area shape="rect" id="node24" href="tables/DimAccount.html" target="_top" title="DimAccount" alt="" coords="1125,1097,1439,1244">
+<area shape="rect" id="node25" href="tables/DimDepartmentGroup.html" target="_top" title="DimDepartmentGroup" alt="" coords="1143,611,1421,757">
+<area shape="rect" id="node18" href="tables/FactCurrencyRate.html" target="_top" title="FactCurrencyRate" alt="" coords="1171,387,1393,533">
+<area shape="rect" id="node21" href="tables/NewFactCurrencyRate.html" target="_top" title="NewFactCurrencyRate" alt="" coords="1153,223,1411,369">
+<area shape="rect" id="node27" href="tables/vAssocSeqOrders.html" target="_top" title="vAssocSeqOrders" alt="" coords="1175,2837,1389,2931">
+<area shape="rect" id="node28" href="tables/vTargetMail.html" target="_top" title="vTargetMail" alt="" coords="1158,3083,1406,3205">
+<area shape="rect" id="node29" href="tables/vDMPrep.html" target="_top" title="vDMPrep" alt="" coords="1138,2727,1426,2820">
+</map>
+                                        <a name='diagram'><img id="compactimpliedDegreeImg" src="diagrams/summary/relationships.implied.compact.png" usemap="#compactImpliedRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="largeimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="largeImpliedRelationshipsDiagram" name="largeImpliedRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/DimDate.html" target="_top" title="DimDate" alt="" coords="767,1731,1021,2352">
+<area shape="rect" id="node2" href="tables/DimCurrency.html" target="_top" title="DimCurrency" alt="" coords="781,515,1007,667">
+<area shape="rect" id="node3" href="tables/FactInternetSales.html" target="_top" title="FactInternetSales" alt="" coords="1162,3449,1402,4276">
+<area shape="rect" id="node7" href="tables/DimCustomer.html" target="_top" title="DimCustomer" alt="" coords="770,4797,1018,5712">
+<area shape="rect" id="node16" href="tables/DimSalesTerritory.html" target="_top" title="DimSalesTerritory" alt="" coords="19,3860,285,4100">
+<area shape="rect" id="node19" href="tables/DimPromotion.html" target="_top" title="DimPromotion" alt="" coords="760,4211,1028,4744">
+<area shape="rect" id="node26" href="tables/DimProduct.html" target="_top" title="DimProduct" alt="" coords="770,3073,1018,4193">
+<area shape="rect" id="node4" href="tables/DimOrganization.html" target="_top" title="DimOrganization" alt="" coords="1159,29,1405,240">
+<area shape="rect" id="node5" href="tables/DimSalesReason.html" target="_top" title="DimSalesReason" alt="" coords="1155,5903,1409,6084">
+<area shape="rect" id="node6" href="tables/DimScenario.html" target="_top" title="DimScenario" alt="" coords="1192,2624,1372,2747">
+<area shape="rect" id="node22" href="tables/DimGeography.html" target="_top" title="DimGeography" alt="" coords="365,4812,642,5199">
+<area shape="rect" id="node8" href="tables/FactSurveyResponse.html" target="_top" title="FactSurveyResponse" alt="" coords="1124,6101,1440,6400">
+<area shape="rect" id="node20" href="tables/DimProductCategory.html" target="_top" title="DimProductCategory" alt="" coords="5,6153,299,6364">
+<area shape="rect" id="node23" href="tables/DimProductSubcategory.html" target="_top" title="DimProductSubcategory" alt="" coords="343,5972,664,6212">
+<area shape="rect" id="node9" href="tables/FactSalesQuota.html" target="_top" title="FactSalesQuota" alt="" coords="1180,743,1384,1012">
+<area shape="rect" id="node10" href="tables/DimEmployee.html" target="_top" title="DimEmployee" alt="" coords="708,740,1080,1713">
+<area shape="rect" id="node11" href="tables/FactCallCenter.html" target="_top" title="FactCallCenter" alt="" coords="1171,1259,1393,1733">
+<area shape="rect" id="node12" href="tables/FactProductInventory.html" target="_top" title="FactProductInventory" alt="" coords="1155,3163,1409,3432">
+<area shape="rect" id="node13" href="tables/DimReseller.html" target="_top" title="DimReseller" alt="" coords="785,2369,1003,3020">
+<area shape="rect" id="node14" href="tables/FactInternetSalesReason.html" target="_top" title="FactInternetSalesReason" alt="" coords="1484,3684,1763,3836">
+<area shape="rect" id="node15" href="tables/FactResellerSales.html" target="_top" title="FactResellerSales" alt="" coords="1162,1751,1402,2607">
+<area shape="rect" id="node17" href="tables/FactFinance.html" target="_top" title="FactFinance" alt="" coords="1511,1001,1736,1300">
+<area shape="rect" id="node24" href="tables/DimAccount.html" target="_top" title="DimAccount" alt="" coords="1125,2788,1439,3145">
+<area shape="rect" id="node25" href="tables/DimDepartmentGroup.html" target="_top" title="DimDepartmentGroup" alt="" coords="1143,1089,1421,1241">
+<area shape="rect" id="node18" href="tables/FactCurrencyRate.html" target="_top" title="FactCurrencyRate" alt="" coords="1171,515,1393,725">
+<area shape="rect" id="node21" href="tables/NewFactCurrencyRate.html" target="_top" title="NewFactCurrencyRate" alt="" coords="1153,257,1411,497">
+<area shape="rect" id="node27" href="tables/vAssocSeqOrders.html" target="_top" title="vAssocSeqOrders" alt="" coords="1175,4732,1389,4889">
+<area shape="rect" id="node28" href="tables/vTargetMail.html" target="_top" title="vTargetMail" alt="" coords="1158,4907,1406,5885">
+<area shape="rect" id="node29" href="tables/vDMPrep.html" target="_top" title="vDMPrep" alt="" coords="1138,4293,1426,4715">
+</map>
+                                        <a name='diagram'><img id="largeimpliedDegreeImg" src="diagrams/summary/relationships.implied.large.png" usemap="#largeImpliedRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div>
+                    <div class="pull-right hidden-xs">
+                        <a href="https://github.com/schemaspy/schemaspy" title="GitHub for SchemaSpy"><i class="fa fa-github-square fa-2x"></i></a>
+                        <a href="http://stackoverflow.com/questions/tagged/schemaspy" title="StackOverflow for SchemaSpy"><i class="fa fa-stack-overflow fa-2x"></i></a>
+                    </div>
+                    <strong>Generated by <a href="http://schemaspy.org/" class="logo-text"><i class="fa fa-database"></i> SchemaSpy 6.2.4</a></strong>
+                </div>
+                <!-- /.container -->
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- jQuery 2.2.3 -->
+        <script src="bower/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script src="bower/admin-lte/plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="bower/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+        <!-- DataTables -->
+        <script src="bower/datatables.net/jquery.dataTables.min.js"></script>
+        <script src="bower/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/dataTables.buttons.min.js"></script>
+        <script src="bower/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.html5.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.print.min.js"></script>
+        <script src="bower/datatables.net-buttons/buttons.colVis.min.js"></script>
+        <!-- SheetJS -->
+        <script src="bower/js-xlsx/xlsx.full.min.js"></script>
+        <!-- pdfmake -->
+        <script src="bower/pdfmake/pdfmake.min.js"></script>
+        <script src="bower/pdfmake/vfs_fonts.js"></script>
+        <!-- SlimScroll -->
+        <script src="bower/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="bower/admin-lte/plugins/fastclick/fastclick.js"></script>
+        <!-- Salvattore -->
+        <script src="bower/salvattore/salvattore.min.js"></script>
+        <!-- AnchorJS -->
+        <script src="bower/anchor-js/anchor.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="bower/codemirror/codemirror.js"></script>
+        <script src="bower/codemirror/sql.js"></script>
+        <!-- AdminLTE App -->
+        <script src="bower/admin-lte/dist/js/app.min.js"></script>
+        <script src="relationships.js"></script>
+        <script src="schemaSpy.js"></script>
+    </body>
+</html>

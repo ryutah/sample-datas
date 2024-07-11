@@ -1,0 +1,7 @@
+{"DepartmentGroupKey":1,"ParentDepartmentGroupKey":null,"DepartmentGroupName":"Corporate"}
+{"DepartmentGroupKey":2,"ParentDepartmentGroupKey":1,"DepartmentGroupName":"Executive General and Administration"}
+{"DepartmentGroupKey":3,"ParentDepartmentGroupKey":1,"DepartmentGroupName":"Inventory Management"}
+{"DepartmentGroupKey":4,"ParentDepartmentGroupKey":1,"DepartmentGroupName":"Manufacturing"}
+{"DepartmentGroupKey":5,"ParentDepartmentGroupKey":1,"DepartmentGroupName":"Quality Assurance"}
+{"DepartmentGroupKey":6,"ParentDepartmentGroupKey":1,"DepartmentGroupName":"Research and Development"}
+{"DepartmentGroupKey":7,"ParentDepartmentGroupKey":1,"DepartmentGroupName":"Sales and Marketing"}
