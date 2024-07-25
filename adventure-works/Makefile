@@ -51,11 +51,12 @@ db/tbls: ## Generate ER diagram by tbls
 
 .PHONY: db/schemaspy
 db/schemaspy: ## Generate ER diagram by schemaspy
-	sudo rm -rf ./schemaspy/*
+	@$(eval wd := $(shell dirname ${PWD}))
+	sudo rm -rf ${wd}/docs/adventure-works/*
 	docker container run \
 		--rm \
 		--net adventure-works \
-		-v ${PWD}/schemaspy:/output \
+		-v ${wd}/docs/adventure-works:/output \
 		-v ${PWD}/resources/drivers:/drivers \
 		-v ${PWD}/schemaspy.properties:/schemaspy.properties schemaspy/schemaspy:6.2.4 -debug
 
