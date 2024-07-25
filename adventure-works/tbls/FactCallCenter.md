@@ -38,7 +38,49 @@
 
 ## Relations
 
-![er](FactCallCenter.svg)
+```mermaid
+erDiagram
+
+"FactCallCenter" }o--|| "DimDate" : ""
+
+"FactCallCenter" {
+  int FactCallCenterID PK
+  int DateKey FK
+  nvarchar_15_ WageType
+  nvarchar_20_ Shift
+  smallint LevelOneOperators
+  smallint LevelTwoOperators
+  smallint TotalOperators
+  int Calls
+  int AutomaticResponses
+  int Orders
+  smallint IssuesRaised
+  smallint AverageTimePerIssue
+  float ServiceGrade
+  datetime Date
+}
+"DimDate" {
+  int DateKey PK
+  date FullDateAlternateKey
+  tinyint DayNumberOfWeek
+  nvarchar_10_ EnglishDayNameOfWeek
+  nvarchar_10_ SpanishDayNameOfWeek
+  nvarchar_10_ FrenchDayNameOfWeek
+  tinyint DayNumberOfMonth
+  smallint DayNumberOfYear
+  tinyint WeekNumberOfYear
+  nvarchar_10_ EnglishMonthName
+  nvarchar_10_ SpanishMonthName
+  nvarchar_10_ FrenchMonthName
+  tinyint MonthNumberOfYear
+  tinyint CalendarQuarter
+  smallint CalendarYear
+  tinyint CalendarSemester
+  tinyint FiscalQuarter
+  smallint FiscalYear
+  tinyint FiscalSemester
+}
+```
 
 ---
 

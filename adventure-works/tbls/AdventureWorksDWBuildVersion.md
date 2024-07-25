@@ -11,7 +11,15 @@
 
 ## Relations
 
-![er](AdventureWorksDWBuildVersion.svg)
+```mermaid
+erDiagram
+
+
+"AdventureWorksDWBuildVersion" {
+  nvarchar_50_ DBVersion
+  datetime VersionDate
+}
+```
 
 ---
 

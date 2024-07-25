@@ -25,7 +25,91 @@
 
 ## Relations
 
-![er](DimCurrency.svg)
+```mermaid
+erDiagram
+
+"DimOrganization" }o--o| "DimCurrency" : ""
+"FactCurrencyRate" }o--|| "DimCurrency" : ""
+"FactInternetSales" }o--|| "DimCurrency" : ""
+"FactResellerSales" }o--|| "DimCurrency" : ""
+
+"DimCurrency" {
+  int CurrencyKey PK
+  nchar CurrencyAlternateKey
+  nvarchar_50_ CurrencyName
+}
+"DimOrganization" {
+  int OrganizationKey PK
+  int ParentOrganizationKey FK
+  nvarchar_16_ PercentageOfOwnership
+  nvarchar_50_ OrganizationName
+  int CurrencyKey FK
+}
+"FactCurrencyRate" {
+  int CurrencyKey PK
+  int DateKey PK
+  float AverageRate
+  float EndOfDayRate
+  datetime Date
+}
+"FactInternetSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int CustomerKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+"FactResellerSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int ResellerKey FK
+  int EmployeeKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+```
 
 ---
 

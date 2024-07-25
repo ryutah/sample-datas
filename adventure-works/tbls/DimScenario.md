@@ -23,7 +23,26 @@
 
 ## Relations
 
-![er](DimScenario.svg)
+```mermaid
+erDiagram
+
+"FactFinance" }o--|| "DimScenario" : ""
+
+"DimScenario" {
+  int ScenarioKey PK
+  nvarchar_50_ ScenarioName
+}
+"FactFinance" {
+  int FinanceKey
+  int DateKey FK
+  int OrganizationKey FK
+  int DepartmentGroupKey FK
+  int ScenarioKey FK
+  int AccountKey FK
+  float Amount
+  datetime Date
+}
+```
 
 ---
 

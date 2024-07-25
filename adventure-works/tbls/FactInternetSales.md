@@ -55,7 +55,174 @@
 
 ## Relations
 
-![er](FactInternetSales.svg)
+```mermaid
+erDiagram
+
+"FactInternetSales" }o--|| "DimProduct" : ""
+"FactInternetSales" }o--|| "DimDate" : ""
+"FactInternetSales" }o--|| "DimDate" : ""
+"FactInternetSales" }o--|| "DimDate" : ""
+"FactInternetSales" }o--|| "DimCustomer" : ""
+"FactInternetSales" }o--|| "DimPromotion" : ""
+"FactInternetSales" }o--|| "DimCurrency" : ""
+"FactInternetSales" }o--|| "DimSalesTerritory" : ""
+"FactInternetSalesReason" }o--|| "FactInternetSales" : ""
+
+"FactInternetSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int CustomerKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+"DimProduct" {
+  int ProductKey PK
+  nvarchar_25_ ProductAlternateKey
+  int ProductSubcategoryKey FK
+  nchar WeightUnitMeasureCode
+  nchar SizeUnitMeasureCode
+  nvarchar_50_ EnglishProductName
+  nvarchar_50_ SpanishProductName
+  nvarchar_50_ FrenchProductName
+  money StandardCost
+  bit FinishedGoodsFlag
+  nvarchar_15_ Color
+  smallint SafetyStockLevel
+  smallint ReorderPoint
+  money ListPrice
+  nvarchar_50_ Size
+  nvarchar_50_ SizeRange
+  float Weight
+  int DaysToManufacture
+  nchar ProductLine
+  money DealerPrice
+  nchar Class
+  nchar Style
+  nvarchar_50_ ModelName
+  varbinary_MAX_ LargePhoto
+  nvarchar_400_ EnglishDescription
+  nvarchar_400_ FrenchDescription
+  nvarchar_400_ ChineseDescription
+  nvarchar_400_ ArabicDescription
+  nvarchar_400_ HebrewDescription
+  nvarchar_400_ ThaiDescription
+  nvarchar_400_ GermanDescription
+  nvarchar_400_ JapaneseDescription
+  nvarchar_400_ TurkishDescription
+  datetime StartDate
+  datetime EndDate
+  nvarchar_7_ Status
+}
+"DimDate" {
+  int DateKey PK
+  date FullDateAlternateKey
+  tinyint DayNumberOfWeek
+  nvarchar_10_ EnglishDayNameOfWeek
+  nvarchar_10_ SpanishDayNameOfWeek
+  nvarchar_10_ FrenchDayNameOfWeek
+  tinyint DayNumberOfMonth
+  smallint DayNumberOfYear
+  tinyint WeekNumberOfYear
+  nvarchar_10_ EnglishMonthName
+  nvarchar_10_ SpanishMonthName
+  nvarchar_10_ FrenchMonthName
+  tinyint MonthNumberOfYear
+  tinyint CalendarQuarter
+  smallint CalendarYear
+  tinyint CalendarSemester
+  tinyint FiscalQuarter
+  smallint FiscalYear
+  tinyint FiscalSemester
+}
+"DimCustomer" {
+  int CustomerKey PK
+  int GeographyKey FK
+  nvarchar_15_ CustomerAlternateKey
+  nvarchar_8_ Title
+  nvarchar_50_ FirstName
+  nvarchar_50_ MiddleName
+  nvarchar_50_ LastName
+  bit NameStyle
+  date BirthDate
+  nchar MaritalStatus
+  nvarchar_10_ Suffix
+  nvarchar_1_ Gender
+  nvarchar_50_ EmailAddress
+  money YearlyIncome
+  tinyint TotalChildren
+  tinyint NumberChildrenAtHome
+  nvarchar_40_ EnglishEducation
+  nvarchar_40_ SpanishEducation
+  nvarchar_40_ FrenchEducation
+  nvarchar_100_ EnglishOccupation
+  nvarchar_100_ SpanishOccupation
+  nvarchar_100_ FrenchOccupation
+  nchar HouseOwnerFlag
+  tinyint NumberCarsOwned
+  nvarchar_120_ AddressLine1
+  nvarchar_120_ AddressLine2
+  nvarchar_20_ Phone
+  date DateFirstPurchase
+  nvarchar_15_ CommuteDistance
+}
+"DimPromotion" {
+  int PromotionKey PK
+  int PromotionAlternateKey
+  nvarchar_255_ EnglishPromotionName
+  nvarchar_255_ SpanishPromotionName
+  nvarchar_255_ FrenchPromotionName
+  float DiscountPct
+  nvarchar_50_ EnglishPromotionType
+  nvarchar_50_ SpanishPromotionType
+  nvarchar_50_ FrenchPromotionType
+  nvarchar_50_ EnglishPromotionCategory
+  nvarchar_50_ SpanishPromotionCategory
+  nvarchar_50_ FrenchPromotionCategory
+  datetime StartDate
+  datetime EndDate
+  int MinQty
+  int MaxQty
+}
+"DimCurrency" {
+  int CurrencyKey PK
+  nchar CurrencyAlternateKey
+  nvarchar_50_ CurrencyName
+}
+"DimSalesTerritory" {
+  int SalesTerritoryKey PK
+  int SalesTerritoryAlternateKey
+  nvarchar_50_ SalesTerritoryRegion
+  nvarchar_50_ SalesTerritoryCountry
+  nvarchar_50_ SalesTerritoryGroup
+  varbinary_MAX_ SalesTerritoryImage
+}
+"FactInternetSalesReason" {
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  int SalesReasonKey PK
+}
+```
 
 ---
 

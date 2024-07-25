@@ -30,7 +30,66 @@
 
 ## Relations
 
-![er](DimProductSubcategory.svg)
+```mermaid
+erDiagram
+
+"DimProduct" }o--o| "DimProductSubcategory" : ""
+"DimProductSubcategory" }o--o| "DimProductCategory" : ""
+
+"DimProductSubcategory" {
+  int ProductSubcategoryKey PK
+  int ProductSubcategoryAlternateKey
+  nvarchar_50_ EnglishProductSubcategoryName
+  nvarchar_50_ SpanishProductSubcategoryName
+  nvarchar_50_ FrenchProductSubcategoryName
+  int ProductCategoryKey FK
+}
+"DimProduct" {
+  int ProductKey PK
+  nvarchar_25_ ProductAlternateKey
+  int ProductSubcategoryKey FK
+  nchar WeightUnitMeasureCode
+  nchar SizeUnitMeasureCode
+  nvarchar_50_ EnglishProductName
+  nvarchar_50_ SpanishProductName
+  nvarchar_50_ FrenchProductName
+  money StandardCost
+  bit FinishedGoodsFlag
+  nvarchar_15_ Color
+  smallint SafetyStockLevel
+  smallint ReorderPoint
+  money ListPrice
+  nvarchar_50_ Size
+  nvarchar_50_ SizeRange
+  float Weight
+  int DaysToManufacture
+  nchar ProductLine
+  money DealerPrice
+  nchar Class
+  nchar Style
+  nvarchar_50_ ModelName
+  varbinary_MAX_ LargePhoto
+  nvarchar_400_ EnglishDescription
+  nvarchar_400_ FrenchDescription
+  nvarchar_400_ ChineseDescription
+  nvarchar_400_ ArabicDescription
+  nvarchar_400_ HebrewDescription
+  nvarchar_400_ ThaiDescription
+  nvarchar_400_ GermanDescription
+  nvarchar_400_ JapaneseDescription
+  nvarchar_400_ TurkishDescription
+  datetime StartDate
+  datetime EndDate
+  nvarchar_7_ Status
+}
+"DimProductCategory" {
+  int ProductCategoryKey PK
+  int ProductCategoryAlternateKey
+  nvarchar_50_ EnglishProductCategoryName
+  nvarchar_50_ SpanishProductCategoryName
+  nvarchar_50_ FrenchProductCategoryName
+}
+```
 
 ---
 

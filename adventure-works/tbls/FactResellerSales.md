@@ -57,7 +57,194 @@
 
 ## Relations
 
-![er](FactResellerSales.svg)
+```mermaid
+erDiagram
+
+"FactResellerSales" }o--|| "DimProduct" : ""
+"FactResellerSales" }o--|| "DimDate" : ""
+"FactResellerSales" }o--|| "DimDate" : ""
+"FactResellerSales" }o--|| "DimDate" : ""
+"FactResellerSales" }o--|| "DimReseller" : ""
+"FactResellerSales" }o--|| "DimEmployee" : ""
+"FactResellerSales" }o--|| "DimPromotion" : ""
+"FactResellerSales" }o--|| "DimCurrency" : ""
+"FactResellerSales" }o--|| "DimSalesTerritory" : ""
+
+"FactResellerSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int ResellerKey FK
+  int EmployeeKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+"DimProduct" {
+  int ProductKey PK
+  nvarchar_25_ ProductAlternateKey
+  int ProductSubcategoryKey FK
+  nchar WeightUnitMeasureCode
+  nchar SizeUnitMeasureCode
+  nvarchar_50_ EnglishProductName
+  nvarchar_50_ SpanishProductName
+  nvarchar_50_ FrenchProductName
+  money StandardCost
+  bit FinishedGoodsFlag
+  nvarchar_15_ Color
+  smallint SafetyStockLevel
+  smallint ReorderPoint
+  money ListPrice
+  nvarchar_50_ Size
+  nvarchar_50_ SizeRange
+  float Weight
+  int DaysToManufacture
+  nchar ProductLine
+  money DealerPrice
+  nchar Class
+  nchar Style
+  nvarchar_50_ ModelName
+  varbinary_MAX_ LargePhoto
+  nvarchar_400_ EnglishDescription
+  nvarchar_400_ FrenchDescription
+  nvarchar_400_ ChineseDescription
+  nvarchar_400_ ArabicDescription
+  nvarchar_400_ HebrewDescription
+  nvarchar_400_ ThaiDescription
+  nvarchar_400_ GermanDescription
+  nvarchar_400_ JapaneseDescription
+  nvarchar_400_ TurkishDescription
+  datetime StartDate
+  datetime EndDate
+  nvarchar_7_ Status
+}
+"DimDate" {
+  int DateKey PK
+  date FullDateAlternateKey
+  tinyint DayNumberOfWeek
+  nvarchar_10_ EnglishDayNameOfWeek
+  nvarchar_10_ SpanishDayNameOfWeek
+  nvarchar_10_ FrenchDayNameOfWeek
+  tinyint DayNumberOfMonth
+  smallint DayNumberOfYear
+  tinyint WeekNumberOfYear
+  nvarchar_10_ EnglishMonthName
+  nvarchar_10_ SpanishMonthName
+  nvarchar_10_ FrenchMonthName
+  tinyint MonthNumberOfYear
+  tinyint CalendarQuarter
+  smallint CalendarYear
+  tinyint CalendarSemester
+  tinyint FiscalQuarter
+  smallint FiscalYear
+  tinyint FiscalSemester
+}
+"DimReseller" {
+  int ResellerKey PK
+  int GeographyKey FK
+  nvarchar_15_ ResellerAlternateKey
+  nvarchar_25_ Phone
+  varchar_20_ BusinessType
+  nvarchar_50_ ResellerName
+  int NumberEmployees
+  char OrderFrequency
+  tinyint OrderMonth
+  int FirstOrderYear
+  int LastOrderYear
+  nvarchar_50_ ProductLine
+  nvarchar_60_ AddressLine1
+  nvarchar_60_ AddressLine2
+  money AnnualSales
+  nvarchar_50_ BankName
+  tinyint MinPaymentType
+  money MinPaymentAmount
+  money AnnualRevenue
+  int YearOpened
+}
+"DimEmployee" {
+  int EmployeeKey PK
+  int ParentEmployeeKey FK
+  nvarchar_15_ EmployeeNationalIDAlternateKey
+  nvarchar_15_ ParentEmployeeNationalIDAlternateKey
+  int SalesTerritoryKey FK
+  nvarchar_50_ FirstName
+  nvarchar_50_ LastName
+  nvarchar_50_ MiddleName
+  bit NameStyle
+  nvarchar_50_ Title
+  date HireDate
+  date BirthDate
+  nvarchar_256_ LoginID
+  nvarchar_50_ EmailAddress
+  nvarchar_25_ Phone
+  nchar MaritalStatus
+  nvarchar_50_ EmergencyContactName
+  nvarchar_25_ EmergencyContactPhone
+  bit SalariedFlag
+  nchar Gender
+  tinyint PayFrequency
+  money BaseRate
+  smallint VacationHours
+  smallint SickLeaveHours
+  bit CurrentFlag
+  bit SalesPersonFlag
+  nvarchar_50_ DepartmentName
+  date StartDate
+  date EndDate
+  nvarchar_50_ Status
+  varbinary_MAX_ EmployeePhoto
+}
+"DimPromotion" {
+  int PromotionKey PK
+  int PromotionAlternateKey
+  nvarchar_255_ EnglishPromotionName
+  nvarchar_255_ SpanishPromotionName
+  nvarchar_255_ FrenchPromotionName
+  float DiscountPct
+  nvarchar_50_ EnglishPromotionType
+  nvarchar_50_ SpanishPromotionType
+  nvarchar_50_ FrenchPromotionType
+  nvarchar_50_ EnglishPromotionCategory
+  nvarchar_50_ SpanishPromotionCategory
+  nvarchar_50_ FrenchPromotionCategory
+  datetime StartDate
+  datetime EndDate
+  int MinQty
+  int MaxQty
+}
+"DimCurrency" {
+  int CurrencyKey PK
+  nchar CurrencyAlternateKey
+  nvarchar_50_ CurrencyName
+}
+"DimSalesTerritory" {
+  int SalesTerritoryKey PK
+  int SalesTerritoryAlternateKey
+  nvarchar_50_ SalesTerritoryRegion
+  nvarchar_50_ SalesTerritoryCountry
+  nvarchar_50_ SalesTerritoryGroup
+  varbinary_MAX_ SalesTerritoryImage
+}
+```
 
 ---
 

@@ -29,7 +29,21 @@
 
 ## Relations
 
-![er](DatabaseLog.svg)
+```mermaid
+erDiagram
+
+
+"DatabaseLog" {
+  int DatabaseLogID PK
+  datetime PostTime
+  nvarchar_128_ DatabaseUser
+  nvarchar_128_ Event
+  nvarchar_128_ Schema
+  nvarchar_128_ Object
+  nvarchar_MAX_ TSQL
+  xml XmlEvent
+}
+```
 
 ---
 

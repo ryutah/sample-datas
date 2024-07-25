@@ -26,7 +26,52 @@
 
 ## Relations
 
-![er](FactInternetSalesReason.svg)
+```mermaid
+erDiagram
+
+"FactInternetSalesReason" }o--|| "FactInternetSales" : ""
+"FactInternetSalesReason" }o--|| "DimSalesReason" : ""
+
+"FactInternetSalesReason" {
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  int SalesReasonKey PK
+}
+"FactInternetSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int CustomerKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+"DimSalesReason" {
+  int SalesReasonKey PK
+  int SalesReasonAlternateKey
+  nvarchar_50_ SalesReasonName
+  nvarchar_50_ SalesReasonReasonType
+}
+```
 
 ---
 

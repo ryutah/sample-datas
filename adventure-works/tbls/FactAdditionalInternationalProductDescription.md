@@ -24,7 +24,16 @@
 
 ## Relations
 
-![er](FactAdditionalInternationalProductDescription.svg)
+```mermaid
+erDiagram
+
+
+"FactAdditionalInternationalProductDescription" {
+  int ProductKey PK
+  nvarchar_50_ CultureName PK
+  nvarchar_MAX_ ProductDescription
+}
+```
 
 ---
 

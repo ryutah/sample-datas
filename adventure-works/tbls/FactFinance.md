@@ -27,7 +27,75 @@
 
 ## Relations
 
-![er](FactFinance.svg)
+```mermaid
+erDiagram
+
+"FactFinance" }o--|| "DimDate" : ""
+"FactFinance" }o--|| "DimOrganization" : ""
+"FactFinance" }o--|| "DimDepartmentGroup" : ""
+"FactFinance" }o--|| "DimScenario" : ""
+"FactFinance" }o--|| "DimAccount" : ""
+
+"FactFinance" {
+  int FinanceKey
+  int DateKey FK
+  int OrganizationKey FK
+  int DepartmentGroupKey FK
+  int ScenarioKey FK
+  int AccountKey FK
+  float Amount
+  datetime Date
+}
+"DimDate" {
+  int DateKey PK
+  date FullDateAlternateKey
+  tinyint DayNumberOfWeek
+  nvarchar_10_ EnglishDayNameOfWeek
+  nvarchar_10_ SpanishDayNameOfWeek
+  nvarchar_10_ FrenchDayNameOfWeek
+  tinyint DayNumberOfMonth
+  smallint DayNumberOfYear
+  tinyint WeekNumberOfYear
+  nvarchar_10_ EnglishMonthName
+  nvarchar_10_ SpanishMonthName
+  nvarchar_10_ FrenchMonthName
+  tinyint MonthNumberOfYear
+  tinyint CalendarQuarter
+  smallint CalendarYear
+  tinyint CalendarSemester
+  tinyint FiscalQuarter
+  smallint FiscalYear
+  tinyint FiscalSemester
+}
+"DimOrganization" {
+  int OrganizationKey PK
+  int ParentOrganizationKey FK
+  nvarchar_16_ PercentageOfOwnership
+  nvarchar_50_ OrganizationName
+  int CurrencyKey FK
+}
+"DimDepartmentGroup" {
+  int DepartmentGroupKey PK
+  int ParentDepartmentGroupKey FK
+  nvarchar_50_ DepartmentGroupName
+}
+"DimScenario" {
+  int ScenarioKey PK
+  nvarchar_50_ ScenarioName
+}
+"DimAccount" {
+  int AccountKey PK
+  int ParentAccountKey FK
+  int AccountCodeAlternateKey
+  int ParentAccountCodeAlternateKey
+  nvarchar_50_ AccountDescription
+  nvarchar_50_ AccountType
+  nvarchar_50_ Operator
+  nvarchar_300_ CustomMembers
+  nvarchar_50_ ValueType
+  nvarchar_200_ CustomMemberOptions
+}
+```
 
 ---
 

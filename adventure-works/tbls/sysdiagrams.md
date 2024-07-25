@@ -27,7 +27,18 @@
 
 ## Relations
 
-![er](sysdiagrams.svg)
+```mermaid
+erDiagram
+
+
+"sysdiagrams" {
+  nvarchar_128_ name
+  int principal_id
+  int diagram_id PK
+  int version
+  varbinary_MAX_ definition
+}
+```
 
 ---
 

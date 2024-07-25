@@ -25,7 +25,28 @@
 
 ## Relations
 
-![er](DimDepartmentGroup.svg)
+```mermaid
+erDiagram
+
+"DimDepartmentGroup" }o--o| "DimDepartmentGroup" : ""
+"FactFinance" }o--|| "DimDepartmentGroup" : ""
+
+"DimDepartmentGroup" {
+  int DepartmentGroupKey PK
+  int ParentDepartmentGroupKey FK
+  nvarchar_50_ DepartmentGroupName
+}
+"FactFinance" {
+  int FinanceKey
+  int DateKey FK
+  int OrganizationKey FK
+  int DepartmentGroupKey FK
+  int ScenarioKey FK
+  int AccountKey FK
+  float Amount
+  datetime Date
+}
+```
 
 ---
 

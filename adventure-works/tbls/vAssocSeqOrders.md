@@ -37,7 +37,17 @@ WHERE     (FiscalYear = '2013')
 
 ## Relations
 
-![er](vAssocSeqOrders.svg)
+```mermaid
+erDiagram
+
+
+"vAssocSeqOrders" {
+  nvarchar_20_ OrderNumber
+  int CustomerKey
+  nvarchar_50_ Region
+  varchar_8_ IncomeGroup
+}
+```
 
 ---
 

@@ -29,7 +29,126 @@
 
 ## Relations
 
-![er](DimSalesTerritory.svg)
+```mermaid
+erDiagram
+
+"DimEmployee" }o--o| "DimSalesTerritory" : ""
+"DimGeography" }o--o| "DimSalesTerritory" : ""
+"FactInternetSales" }o--|| "DimSalesTerritory" : ""
+"FactResellerSales" }o--|| "DimSalesTerritory" : ""
+
+"DimSalesTerritory" {
+  int SalesTerritoryKey PK
+  int SalesTerritoryAlternateKey
+  nvarchar_50_ SalesTerritoryRegion
+  nvarchar_50_ SalesTerritoryCountry
+  nvarchar_50_ SalesTerritoryGroup
+  varbinary_MAX_ SalesTerritoryImage
+}
+"DimEmployee" {
+  int EmployeeKey PK
+  int ParentEmployeeKey FK
+  nvarchar_15_ EmployeeNationalIDAlternateKey
+  nvarchar_15_ ParentEmployeeNationalIDAlternateKey
+  int SalesTerritoryKey FK
+  nvarchar_50_ FirstName
+  nvarchar_50_ LastName
+  nvarchar_50_ MiddleName
+  bit NameStyle
+  nvarchar_50_ Title
+  date HireDate
+  date BirthDate
+  nvarchar_256_ LoginID
+  nvarchar_50_ EmailAddress
+  nvarchar_25_ Phone
+  nchar MaritalStatus
+  nvarchar_50_ EmergencyContactName
+  nvarchar_25_ EmergencyContactPhone
+  bit SalariedFlag
+  nchar Gender
+  tinyint PayFrequency
+  money BaseRate
+  smallint VacationHours
+  smallint SickLeaveHours
+  bit CurrentFlag
+  bit SalesPersonFlag
+  nvarchar_50_ DepartmentName
+  date StartDate
+  date EndDate
+  nvarchar_50_ Status
+  varbinary_MAX_ EmployeePhoto
+}
+"DimGeography" {
+  int GeographyKey PK
+  nvarchar_30_ City
+  nvarchar_3_ StateProvinceCode
+  nvarchar_50_ StateProvinceName
+  nvarchar_3_ CountryRegionCode
+  nvarchar_50_ EnglishCountryRegionName
+  nvarchar_50_ SpanishCountryRegionName
+  nvarchar_50_ FrenchCountryRegionName
+  nvarchar_15_ PostalCode
+  int SalesTerritoryKey FK
+  nvarchar_15_ IpAddressLocator
+}
+"FactInternetSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int CustomerKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+"FactResellerSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int ResellerKey FK
+  int EmployeeKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+```
 
 ---
 

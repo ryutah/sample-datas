@@ -28,7 +28,27 @@
 
 ## Relations
 
-![er](DimProductCategory.svg)
+```mermaid
+erDiagram
+
+"DimProductSubcategory" }o--o| "DimProductCategory" : ""
+
+"DimProductCategory" {
+  int ProductCategoryKey PK
+  int ProductCategoryAlternateKey
+  nvarchar_50_ EnglishProductCategoryName
+  nvarchar_50_ SpanishProductCategoryName
+  nvarchar_50_ FrenchProductCategoryName
+}
+"DimProductSubcategory" {
+  int ProductSubcategoryKey PK
+  int ProductSubcategoryAlternateKey
+  nvarchar_50_ EnglishProductSubcategoryName
+  nvarchar_50_ SpanishProductSubcategoryName
+  nvarchar_50_ FrenchProductSubcategoryName
+  int ProductCategoryKey FK
+}
+```
 
 ---
 

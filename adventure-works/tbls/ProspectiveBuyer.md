@@ -45,7 +45,37 @@
 
 ## Relations
 
-![er](ProspectiveBuyer.svg)
+```mermaid
+erDiagram
+
+
+"ProspectiveBuyer" {
+  int ProspectiveBuyerKey PK
+  nvarchar_15_ ProspectAlternateKey
+  nvarchar_50_ FirstName
+  nvarchar_50_ MiddleName
+  nvarchar_50_ LastName
+  datetime BirthDate
+  nchar MaritalStatus
+  nvarchar_1_ Gender
+  nvarchar_50_ EmailAddress
+  money YearlyIncome
+  tinyint TotalChildren
+  tinyint NumberChildrenAtHome
+  nvarchar_40_ Education
+  nvarchar_100_ Occupation
+  nchar HouseOwnerFlag
+  tinyint NumberCarsOwned
+  nvarchar_120_ AddressLine1
+  nvarchar_120_ AddressLine2
+  nvarchar_30_ City
+  nvarchar_3_ StateProvinceCode
+  nvarchar_15_ PostalCode
+  nvarchar_20_ Phone
+  nvarchar_8_ Salutation
+  int Unknown
+}
+```
 
 ---
 

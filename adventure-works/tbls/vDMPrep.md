@@ -94,7 +94,26 @@ AS
 
 ## Relations
 
-![er](vDMPrep.svg)
+```mermaid
+erDiagram
+
+
+"vDMPrep" {
+  nvarchar_50_ EnglishProductCategoryName
+  nvarchar_50_ Model
+  int CustomerKey
+  nvarchar_50_ Region
+  int Age
+  varchar_8_ IncomeGroup
+  smallint CalendarYear
+  smallint FiscalYear
+  tinyint Month
+  nvarchar_20_ OrderNumber
+  tinyint LineNumber
+  smallint Quantity
+  money Amount
+}
+```
 
 ---
 

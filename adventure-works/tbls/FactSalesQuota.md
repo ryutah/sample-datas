@@ -30,7 +30,76 @@
 
 ## Relations
 
-![er](FactSalesQuota.svg)
+```mermaid
+erDiagram
+
+"FactSalesQuota" }o--|| "DimEmployee" : ""
+"FactSalesQuota" }o--|| "DimDate" : ""
+
+"FactSalesQuota" {
+  int SalesQuotaKey PK
+  int EmployeeKey FK
+  int DateKey FK
+  smallint CalendarYear
+  tinyint CalendarQuarter
+  money SalesAmountQuota
+  datetime Date
+}
+"DimEmployee" {
+  int EmployeeKey PK
+  int ParentEmployeeKey FK
+  nvarchar_15_ EmployeeNationalIDAlternateKey
+  nvarchar_15_ ParentEmployeeNationalIDAlternateKey
+  int SalesTerritoryKey FK
+  nvarchar_50_ FirstName
+  nvarchar_50_ LastName
+  nvarchar_50_ MiddleName
+  bit NameStyle
+  nvarchar_50_ Title
+  date HireDate
+  date BirthDate
+  nvarchar_256_ LoginID
+  nvarchar_50_ EmailAddress
+  nvarchar_25_ Phone
+  nchar MaritalStatus
+  nvarchar_50_ EmergencyContactName
+  nvarchar_25_ EmergencyContactPhone
+  bit SalariedFlag
+  nchar Gender
+  tinyint PayFrequency
+  money BaseRate
+  smallint VacationHours
+  smallint SickLeaveHours
+  bit CurrentFlag
+  bit SalesPersonFlag
+  nvarchar_50_ DepartmentName
+  date StartDate
+  date EndDate
+  nvarchar_50_ Status
+  varbinary_MAX_ EmployeePhoto
+}
+"DimDate" {
+  int DateKey PK
+  date FullDateAlternateKey
+  tinyint DayNumberOfWeek
+  nvarchar_10_ EnglishDayNameOfWeek
+  nvarchar_10_ SpanishDayNameOfWeek
+  nvarchar_10_ FrenchDayNameOfWeek
+  tinyint DayNumberOfMonth
+  smallint DayNumberOfYear
+  tinyint WeekNumberOfYear
+  nvarchar_10_ EnglishMonthName
+  nvarchar_10_ SpanishMonthName
+  nvarchar_10_ FrenchMonthName
+  tinyint MonthNumberOfYear
+  tinyint CalendarQuarter
+  smallint CalendarYear
+  tinyint CalendarSemester
+  tinyint FiscalQuarter
+  smallint FiscalYear
+  tinyint FiscalSemester
+}
+```
 
 ---
 

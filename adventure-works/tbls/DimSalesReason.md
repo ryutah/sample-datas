@@ -25,7 +25,23 @@
 
 ## Relations
 
-![er](DimSalesReason.svg)
+```mermaid
+erDiagram
+
+"FactInternetSalesReason" }o--|| "DimSalesReason" : ""
+
+"DimSalesReason" {
+  int SalesReasonKey PK
+  int SalesReasonAlternateKey
+  nvarchar_50_ SalesReasonName
+  nvarchar_50_ SalesReasonReasonType
+}
+"FactInternetSalesReason" {
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  int SalesReasonKey PK
+}
+```
 
 ---
 

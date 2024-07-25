@@ -32,7 +32,35 @@
 
 ## Relations
 
-![er](DimAccount.svg)
+```mermaid
+erDiagram
+
+"DimAccount" }o--o| "DimAccount" : ""
+"FactFinance" }o--|| "DimAccount" : ""
+
+"DimAccount" {
+  int AccountKey PK
+  int ParentAccountKey FK
+  int AccountCodeAlternateKey
+  int ParentAccountCodeAlternateKey
+  nvarchar_50_ AccountDescription
+  nvarchar_50_ AccountType
+  nvarchar_50_ Operator
+  nvarchar_300_ CustomMembers
+  nvarchar_50_ ValueType
+  nvarchar_200_ CustomMemberOptions
+}
+"FactFinance" {
+  int FinanceKey
+  int DateKey FK
+  int OrganizationKey FK
+  int DepartmentGroupKey FK
+  int ScenarioKey FK
+  int AccountKey FK
+  float Amount
+  datetime Date
+}
+```
 
 ---
 

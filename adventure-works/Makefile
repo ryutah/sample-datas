@@ -47,7 +47,7 @@ db/tbls: ## Generate ER diagram by tbls
 		--net adventure-works \
 		--rm \
 		-v ${PWD}:/work \
-		-w /work ghcr.io/k1low/tbls doc mssql://${user_name}:${password}@sql1:1433/AdventureWorksDW2022 /work/tbls
+		-w /work ghcr.io/k1low/tbls doc mssql://${user_name}:${password}@sql1:1433/AdventureWorksDW2022 /work/tbls --er-format mermaid
 
 .PHONY: db/schemaspy
 db/schemaspy: ## Generate ER diagram by schemaspy

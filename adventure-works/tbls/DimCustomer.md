@@ -52,7 +52,96 @@
 
 ## Relations
 
-![er](DimCustomer.svg)
+```mermaid
+erDiagram
+
+"FactInternetSales" }o--|| "DimCustomer" : ""
+"FactSurveyResponse" }o--|| "DimCustomer" : ""
+"DimCustomer" }o--o| "DimGeography" : ""
+
+"DimCustomer" {
+  int CustomerKey PK
+  int GeographyKey FK
+  nvarchar_15_ CustomerAlternateKey
+  nvarchar_8_ Title
+  nvarchar_50_ FirstName
+  nvarchar_50_ MiddleName
+  nvarchar_50_ LastName
+  bit NameStyle
+  date BirthDate
+  nchar MaritalStatus
+  nvarchar_10_ Suffix
+  nvarchar_1_ Gender
+  nvarchar_50_ EmailAddress
+  money YearlyIncome
+  tinyint TotalChildren
+  tinyint NumberChildrenAtHome
+  nvarchar_40_ EnglishEducation
+  nvarchar_40_ SpanishEducation
+  nvarchar_40_ FrenchEducation
+  nvarchar_100_ EnglishOccupation
+  nvarchar_100_ SpanishOccupation
+  nvarchar_100_ FrenchOccupation
+  nchar HouseOwnerFlag
+  tinyint NumberCarsOwned
+  nvarchar_120_ AddressLine1
+  nvarchar_120_ AddressLine2
+  nvarchar_20_ Phone
+  date DateFirstPurchase
+  nvarchar_15_ CommuteDistance
+}
+"FactInternetSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int CustomerKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+"FactSurveyResponse" {
+  int SurveyResponseKey PK
+  int DateKey FK
+  int CustomerKey FK
+  int ProductCategoryKey
+  nvarchar_50_ EnglishProductCategoryName
+  int ProductSubcategoryKey
+  nvarchar_50_ EnglishProductSubcategoryName
+  datetime Date
+}
+"DimGeography" {
+  int GeographyKey PK
+  nvarchar_30_ City
+  nvarchar_3_ StateProvinceCode
+  nvarchar_50_ StateProvinceName
+  nvarchar_3_ CountryRegionCode
+  nvarchar_50_ EnglishCountryRegionName
+  nvarchar_50_ SpanishCountryRegionName
+  nvarchar_50_ FrenchCountryRegionName
+  nvarchar_15_ PostalCode
+  int SalesTerritoryKey FK
+  nvarchar_15_ IpAddressLocator
+}
+```
 
 ---
 

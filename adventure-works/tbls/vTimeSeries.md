@@ -73,7 +73,20 @@ AS
 
 ## Relations
 
-![er](vTimeSeries.svg)
+```mermaid
+erDiagram
+
+
+"vTimeSeries" {
+  nvarchar_56_ ModelRegion
+  int TimeIndex
+  int Quantity
+  money Amount
+  smallint CalendarYear
+  tinyint Month
+  datetime ReportingDate
+}
+```
 
 ---
 

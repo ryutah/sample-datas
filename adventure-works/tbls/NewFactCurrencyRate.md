@@ -15,7 +15,19 @@
 
 ## Relations
 
-![er](NewFactCurrencyRate.svg)
+```mermaid
+erDiagram
+
+
+"NewFactCurrencyRate" {
+  real AverageRate
+  nvarchar_3_ CurrencyID
+  date CurrencyDate
+  real EndOfDayRate
+  int CurrencyKey
+  int DateKey
+}
+```
 
 ---
 

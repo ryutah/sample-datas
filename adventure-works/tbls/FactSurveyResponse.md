@@ -31,7 +31,75 @@
 
 ## Relations
 
-![er](FactSurveyResponse.svg)
+```mermaid
+erDiagram
+
+"FactSurveyResponse" }o--|| "DimDate" : ""
+"FactSurveyResponse" }o--|| "DimCustomer" : ""
+
+"FactSurveyResponse" {
+  int SurveyResponseKey PK
+  int DateKey FK
+  int CustomerKey FK
+  int ProductCategoryKey
+  nvarchar_50_ EnglishProductCategoryName
+  int ProductSubcategoryKey
+  nvarchar_50_ EnglishProductSubcategoryName
+  datetime Date
+}
+"DimDate" {
+  int DateKey PK
+  date FullDateAlternateKey
+  tinyint DayNumberOfWeek
+  nvarchar_10_ EnglishDayNameOfWeek
+  nvarchar_10_ SpanishDayNameOfWeek
+  nvarchar_10_ FrenchDayNameOfWeek
+  tinyint DayNumberOfMonth
+  smallint DayNumberOfYear
+  tinyint WeekNumberOfYear
+  nvarchar_10_ EnglishMonthName
+  nvarchar_10_ SpanishMonthName
+  nvarchar_10_ FrenchMonthName
+  tinyint MonthNumberOfYear
+  tinyint CalendarQuarter
+  smallint CalendarYear
+  tinyint CalendarSemester
+  tinyint FiscalQuarter
+  smallint FiscalYear
+  tinyint FiscalSemester
+}
+"DimCustomer" {
+  int CustomerKey PK
+  int GeographyKey FK
+  nvarchar_15_ CustomerAlternateKey
+  nvarchar_8_ Title
+  nvarchar_50_ FirstName
+  nvarchar_50_ MiddleName
+  nvarchar_50_ LastName
+  bit NameStyle
+  date BirthDate
+  nchar MaritalStatus
+  nvarchar_10_ Suffix
+  nvarchar_1_ Gender
+  nvarchar_50_ EmailAddress
+  money YearlyIncome
+  tinyint TotalChildren
+  tinyint NumberChildrenAtHome
+  nvarchar_40_ EnglishEducation
+  nvarchar_40_ SpanishEducation
+  nvarchar_40_ FrenchEducation
+  nvarchar_100_ EnglishOccupation
+  nvarchar_100_ SpanishOccupation
+  nvarchar_100_ FrenchOccupation
+  nchar HouseOwnerFlag
+  tinyint NumberCarsOwned
+  nvarchar_120_ AddressLine1
+  nvarchar_120_ AddressLine2
+  nvarchar_20_ Phone
+  date DateFirstPurchase
+  nvarchar_15_ CommuteDistance
+}
+```
 
 ---
 

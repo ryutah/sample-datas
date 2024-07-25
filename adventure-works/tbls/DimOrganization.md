@@ -28,7 +28,36 @@
 
 ## Relations
 
-![er](DimOrganization.svg)
+```mermaid
+erDiagram
+
+"DimOrganization" }o--o| "DimOrganization" : ""
+"FactFinance" }o--|| "DimOrganization" : ""
+"DimOrganization" }o--o| "DimCurrency" : ""
+
+"DimOrganization" {
+  int OrganizationKey PK
+  int ParentOrganizationKey FK
+  nvarchar_16_ PercentageOfOwnership
+  nvarchar_50_ OrganizationName
+  int CurrencyKey FK
+}
+"FactFinance" {
+  int FinanceKey
+  int DateKey FK
+  int OrganizationKey FK
+  int DepartmentGroupKey FK
+  int ScenarioKey FK
+  int AccountKey FK
+  float Amount
+  datetime Date
+}
+"DimCurrency" {
+  int CurrencyKey PK
+  nchar CurrencyAlternateKey
+  nvarchar_50_ CurrencyName
+}
+```
 
 ---
 

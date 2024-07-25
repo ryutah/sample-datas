@@ -39,7 +39,88 @@
 
 ## Relations
 
-![er](DimPromotion.svg)
+```mermaid
+erDiagram
+
+"FactInternetSales" }o--|| "DimPromotion" : ""
+"FactResellerSales" }o--|| "DimPromotion" : ""
+
+"DimPromotion" {
+  int PromotionKey PK
+  int PromotionAlternateKey
+  nvarchar_255_ EnglishPromotionName
+  nvarchar_255_ SpanishPromotionName
+  nvarchar_255_ FrenchPromotionName
+  float DiscountPct
+  nvarchar_50_ EnglishPromotionType
+  nvarchar_50_ SpanishPromotionType
+  nvarchar_50_ FrenchPromotionType
+  nvarchar_50_ EnglishPromotionCategory
+  nvarchar_50_ SpanishPromotionCategory
+  nvarchar_50_ FrenchPromotionCategory
+  datetime StartDate
+  datetime EndDate
+  int MinQty
+  int MaxQty
+}
+"FactInternetSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int CustomerKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+"FactResellerSales" {
+  int ProductKey FK
+  int OrderDateKey FK
+  int DueDateKey FK
+  int ShipDateKey FK
+  int ResellerKey FK
+  int EmployeeKey FK
+  int PromotionKey FK
+  int CurrencyKey FK
+  int SalesTerritoryKey FK
+  nvarchar_20_ SalesOrderNumber PK
+  tinyint SalesOrderLineNumber PK
+  tinyint RevisionNumber
+  smallint OrderQuantity
+  money UnitPrice
+  money ExtendedAmount
+  float UnitPriceDiscountPct
+  float DiscountAmount
+  money ProductStandardCost
+  money TotalProductCost
+  money SalesAmount
+  money TaxAmt
+  money Freight
+  nvarchar_25_ CarrierTrackingNumber
+  nvarchar_25_ CustomerPONumber
+  datetime OrderDate
+  datetime DueDate
+  datetime ShipDate
+}
+```
 
 ---
 
